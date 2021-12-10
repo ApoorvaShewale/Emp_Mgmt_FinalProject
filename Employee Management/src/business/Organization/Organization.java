@@ -54,6 +54,7 @@ public abstract class Organization {
         userAccountDirectory = new UserAccountDirectory();
     }
 
+    public abstract ArrayList<Role> getSupportedRole();
     
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;

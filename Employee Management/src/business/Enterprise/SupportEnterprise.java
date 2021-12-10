@@ -5,7 +5,7 @@
  */
 package business.Enterprise;
 
-
+import business.Organization.Organization;
 import business.Role.AssetManagerLogin;
 import business.Role.Role;
 import business.Role.TechSupportLogin;
@@ -30,5 +30,11 @@ public class SupportEnterprise extends Enterprise {
         return roles;
     }
     
+    @Override
+    public ArrayList<Organization.Type> getSupportedOrganization() {
+        ArrayList<Organization.Type> organizations = new ArrayList<>();
+        organizations.add(Type.Support);
+        return organizations;
+    }
     
 }

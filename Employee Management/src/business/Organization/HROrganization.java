@@ -5,7 +5,10 @@
  */
 package business.Organization;
 
+import business.Role.CompensationBenefitsHRLogin;
+import business.Role.LearningDevelopmentHRLogin;
 import business.Role.Role;
+import business.Role.TalentAcquisitionHRLogin;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +22,13 @@ public class HROrganization extends Organization{
     public HROrganization() {
         super(Organization.Type.HR.getValue());
     }
-
     
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new CompensationBenefitsHRLogin());
+        roles.add(new LearningDevelopmentHRLogin());
+        roles.add(new TalentAcquisitionHRLogin());
+        return roles;
+    } 
 }
