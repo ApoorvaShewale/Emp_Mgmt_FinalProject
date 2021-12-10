@@ -6,6 +6,7 @@
 package business.Enterprise;
 
 import business.Organization.Organization;
+import business.Organization.OrganizationDirectory;
 
 
 /**
@@ -15,6 +16,12 @@ import business.Organization.Organization;
 
 @SuppressWarnings("unchecked")
 public abstract class Enterprise extends Organization{
+    
+    private OrganizationDirectory organizationDirectory;
+
+    public OrganizationDirectory getOrganizationDirectory() {
+        return organizationDirectory;
+    }
     
     
 }

@@ -5,6 +5,18 @@
  */
 package ui.Login;
 
+import business.DB4OUtil.DB4OUtil;
+import business.Organization.Organization;
+import business.Enterprise.Enterprise;
+import business.EmployeeManagement;
+import business.Network.Network;
+import business.UserAccount.UserAccount;
+import ui.EmployeeStartUI;
+import ui.SystemAdmin.SystemAdminWorkerPanel;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 
 /**
  *
@@ -12,6 +24,19 @@ package ui.Login;
  */
 @SuppressWarnings("unchecked")
 public class SystemAdminJPanel extends javax.swing.JPanel {
+    
+    public EmployeeStartUI starts;
+    private EmployeeManagement system;
+    private JPanel container,logincontainerJPanel,sysadminLoginjPanel,stardardLoginjPanel;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    public SystemAdminJPanel(JPanel sysadminLoginjPanel,JPanel stardardLoginjPanel,JPanel logincontainerJPanel,JPanel container, EmployeeManagement system) {
+        initComponents();
+        this.system=system;
+        this.container=container;
+        this.logincontainerJPanel=logincontainerJPanel;
+        this.sysadminLoginjPanel=sysadminLoginjPanel;
+        this.stardardLoginjPanel=stardardLoginjPanel;
+    }
 
     
     /**
@@ -111,6 +136,47 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
     private void loginjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginjButtonActionPerformed
 
+        String userName = userjTextField.getText();
+        char[] passwordRaw = passjPasswordField.getPassword();
+        String password = String.valueOf(passwordRaw);
+
+        //Step1: Check in the system admin user account directory if you have the user
+        UserAccount user=system.getUserAccountDirectory().authenticateUser(userName, password);
+
+        Enterprise inEnterprise=null;
+        Organization inOrganization=null;
+
+        if(user==null){
+            //Step 2: Go inside each network and check each enterprise
+            for(Network network:system.getNetworkList()){
+                
+            }
+        }
+
+        if(user==null){
+            JOptionPane.showMessageDialog(null, "Invalid credentials");
+            return;
+        }
+        else{
+            boolean isWarrior=system.getUserAccountDirectory().IsSystemAdmin(user.getRole().toString());
+            if(isWarrior){
+                SystemAdminWorkerPanel systemadminWorkAreaPanel=new SystemAdminWorkerPanel(sysadminLoginjPanel,stardardLoginjPanel,logincontainerJPanel,container, user ,system);
+                logincontainerJPanel.setVisible(false);
+                container.add("systemadminWorkAreaPanel",systemadminWorkAreaPanel);
+                CardLayout layout=(CardLayout)container.getLayout();
+                layout.next(container);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Please Confirm Your User Role");
+                return;
+            }
+
+        }
+
+                                               
+
+
+                                 
     }//GEN-LAST:event_loginjButtonActionPerformed
 
 

@@ -5,6 +5,18 @@
  */
 package ui.Login;
 
+import business.DB4OUtil.DB4OUtil;
+import business.EmployeeManagement;
+import business.Enterprise.Enterprise;
+import business.Network.Network;
+import business.Organization.Organization;
+import business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import ui.EmployeeStartUI;
+import ui.ManageAdmin.ManageAdminWorkerPanel;
+
 
 /**
  *
@@ -12,6 +24,17 @@ package ui.Login;
  */
 @SuppressWarnings("unchecked")
 public class ManageAdminJPanel extends javax.swing.JPanel {
+    
+    public EmployeeStartUI starts;
+    private EmployeeManagement system;
+    private JPanel container,logincontainerJPanel;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    public ManageAdminJPanel(JPanel logincontainerJPanel,JPanel container, EmployeeManagement system) {
+        initComponents();
+        this.system=system;
+        this.container=container;
+        this.logincontainerJPanel=logincontainerJPanel;
+    }
 
   
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -105,6 +128,44 @@ public class ManageAdminJPanel extends javax.swing.JPanel {
 
     private void loginjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginjButtonActionPerformed
         
+        String userName = userjTextField.getText();
+        char[] passwordRaw = passjPasswordField.getPassword();
+        String password = String.valueOf(passwordRaw);
+
+        //Step1: Check in the system admin user account directory if you have the user
+        UserAccount user=system.getUserAccountDirectory().authenticateUser(userName, password);
+
+        Enterprise inEnterprise=null;
+        Organization inOrganization=null;
+
+        if(user==null){
+            //Step 2: Go inside each network and check each enterprise
+            for(Network network:system.getNetworkList()){
+                
+            }
+        }
+
+        if(user==null){
+            JOptionPane.showMessageDialog(null, "Invalid credentials");
+            return;
+        }
+        else{
+            boolean isWarrior=system.getUserAccountDirectory().IsManageAdmin(user.getRole().toString());
+            if(isWarrior){
+                ManageAdminWorkerPanel managedminWorkAreaPanel=new ManageAdminWorkerPanel(logincontainerJPanel,container,inEnterprise,inOrganization, user ,system);
+                logincontainerJPanel.setVisible(false);
+                container.add("managedminWorkAreaPanel",managedminWorkAreaPanel);
+                CardLayout layout=(CardLayout)container.getLayout();
+                layout.next(container);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Please Confirm Your User Role");
+                return;
+            }
+
+        }
+
+                                   
     }//GEN-LAST:event_loginjButtonActionPerformed
 
 

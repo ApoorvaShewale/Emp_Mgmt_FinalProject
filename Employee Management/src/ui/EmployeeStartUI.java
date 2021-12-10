@@ -5,12 +5,36 @@
  */
 package ui;
 
+import business.DB4OUtil.DB4OUtil;
+import business.Organization.Organization;
+import business.Enterprise.Enterprise;
+import business.EmployeeManagement;
+import business.Network.Network;
+import business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Toolkit;
+import javax.swing.JOptionPane;
+import ui.Login.ManageAdminJPanel;
+import ui.Login.SystemAdminJPanel;
 
 /**
  *
  * @author ApoorvaShewale
  */
 public class EmployeeStartUI extends javax.swing.JFrame {
+    
+    private EmployeeManagement system;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    public EmployeeStartUI() {
+        initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("employee2.jpg")));
+        system = dB4OUtil.retrieveSystem();
+//        this.setSize(1480, 1050);
+        
+        this.roleLoginjPanel.setVisible(false);
+    }
+        
+        
 
    
     /**
@@ -129,7 +153,6 @@ public class EmployeeStartUI extends javax.swing.JFrame {
         AcquistionHRLoginBtn2.setBackground(new java.awt.Color(175, 180, 209));
         AcquistionHRLoginBtn2.setForeground(new java.awt.Color(0, 0, 102));
         AcquistionHRLoginBtn2.setText("Tech Support Manager");
-        AcquistionHRLoginBtn2.setActionCommand("Tech Support Manager");
         AcquistionHRLoginBtn2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(0, 102, 102)));
         AcquistionHRLoginBtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -310,7 +333,7 @@ public class EmployeeStartUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
             .addComponent(logincontainerJPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -319,6 +342,44 @@ public class EmployeeStartUI extends javax.swing.JFrame {
 
     private void loginSysadminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSysadminbtnActionPerformed
       
+        String username = sysadminUsernameJTextField.getText();
+        // Get Password
+        char[] passwordstr = sysadminPasswordField.getPassword();
+        String password = String.valueOf(passwordstr);
+
+        //Step1: Check in the system user account directory if you have the user
+        UserAccount userAccount=system.getUserAccountDirectory().authenticateUser(username, password);
+        Enterprise inEnterprise=null;
+        Organization inOrganization=null;
+
+        if(userAccount==null){
+            //Step 2: Go inside each network and check each enterprise
+            for(Network network:system.getNetworkList()){
+                
+           }
+       }
+
+        if(userAccount==null){
+            JOptionPane.showMessageDialog(null, "Account Not Found or Wrong Password");
+            return;
+        }
+        else{
+            boolean isSysAdmin=system.getUserAccountDirectory().IsSystemAdmin(userAccount.getRole().toString());
+            if(isSysAdmin){
+                this.roleLoginjPanel.setVisible(true);
+                this.systemAdminLoginjPanel.setVisible(false);
+                CardLayout layout=(CardLayout)container.getLayout();
+                container.add("workArea",userAccount.getRole().createWorkArea(logincontainerJPanel,container, userAccount, inOrganization, inEnterprise, system));
+                layout.next(container);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Please Use SysAdmin Account");
+                return;
+            }
+        }
+        sysadminUsernameJTextField.setText("");
+        sysadminPasswordField.setText("");
+                                             
     }//GEN-LAST:event_loginSysadminbtnActionPerformed
 
     private void employeeloginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeloginBtnActionPerformed
@@ -327,10 +388,14 @@ public class EmployeeStartUI extends javax.swing.JFrame {
 
     private void ManageLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageLoginBtnActionPerformed
        
+
     }//GEN-LAST:event_ManageLoginBtnActionPerformed
 
     private void sysAdminLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sysAdminLoginBtnActionPerformed
-        
+       SystemAdminJPanel sysadminPanel=new SystemAdminJPanel(systemAdminLoginjPanel,roleLoginjPanel,logincontainerJPanel,container,system);
+        CardLayout layout=(CardLayout)container.getLayout();
+        container.add("sysadminJPanel",sysadminPanel);
+        layout.next(container);
     }//GEN-LAST:event_sysAdminLoginBtnActionPerformed
 
     private void assetLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assetLoginBtnActionPerformed
@@ -360,8 +425,60 @@ public class EmployeeStartUI extends javax.swing.JFrame {
     private void AcquistionHRLoginBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcquistionHRLoginBtn5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AcquistionHRLoginBtn5ActionPerformed
-    
-    
+    public void closeLoginPanel(){
+        this.logincontainerJPanel.setVisible(false);
+        this.container.removeAll();
+//        this.container.add(welcomelgnjPanel);
+//        this.networksystemName.setText("Your have been Logged Out.");
+    }
+
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(EmployeeStartUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(EmployeeStartUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(EmployeeStartUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(EmployeeStartUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new EmployeeStartUI().setVisible(true);
+            }
+        });
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

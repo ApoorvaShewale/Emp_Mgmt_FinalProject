@@ -16,8 +16,8 @@ import java.util.ArrayList;
 @SuppressWarnings("unchecked")
 public class FinanceOrganization extends Organization{
 
-    public ArrayList<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public FinanceOrganization() {
+        super(Organization.Type.Finance.getValue());
     }
 
     

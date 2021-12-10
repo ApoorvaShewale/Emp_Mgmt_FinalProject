@@ -5,6 +5,7 @@
  */
 package business.Organization;
 
+import business.Role.ManageAdminLogin;
 import business.Role.Role;
 import java.util.ArrayList;
 
@@ -16,8 +17,10 @@ import java.util.ArrayList;
 @SuppressWarnings("unchecked")
 public class ManageOrganization extends Organization{
 
-    public ArrayList<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ManageOrganization() {
+        super(Organization.Type.ManageAdmin.getValue());
     }
+    
+    
 
     }

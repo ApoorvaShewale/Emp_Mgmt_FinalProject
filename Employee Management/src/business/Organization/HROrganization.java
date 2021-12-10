@@ -16,8 +16,8 @@ import java.util.ArrayList;
 @SuppressWarnings("unchecked")
 public class HROrganization extends Organization{
 
-    public ArrayList<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public HROrganization() {
+        super(Organization.Type.HR.getValue());
     }
 
     
