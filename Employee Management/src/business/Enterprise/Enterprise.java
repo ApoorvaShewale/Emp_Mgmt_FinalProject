@@ -23,5 +23,24 @@ public abstract class Enterprise extends Organization{
         return organizationDirectory;
     }
     
+    public enum EnterpriseType{
+        ManageHR("Manage HR"),
+        ManageSupport("Manage Support"),
+        ManageFinance("Manage Finance"),
+        ManageProject("Manage Project");
+        
+        private String value;
+        
+        private EnterpriseType(String value){
+            this.value=value;
+        }
+        public String getValue() {
+            return value;
+        }
+        @Override
+        public String toString(){
+        return value;
+    }
+    }
     
 }
