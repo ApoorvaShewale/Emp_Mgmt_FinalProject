@@ -7,6 +7,7 @@ package business.Enterprise;
 
 import business.Organization.Organization;
 import business.Organization.OrganizationDirectory;
+import java.util.ArrayList;
 
 
 /**
@@ -17,6 +18,7 @@ import business.Organization.OrganizationDirectory;
 @SuppressWarnings("unchecked")
 public abstract class Enterprise extends Organization{
     
+    private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
 
     public OrganizationDirectory getOrganizationDirectory() {
@@ -42,5 +44,20 @@ public abstract class Enterprise extends Organization{
         return value;
     }
     }
+
+    public EnterpriseType getEnterpriseType() {
+        return enterpriseType;
+    }
+
+    public void setEnterpriseType(EnterpriseType enterpriseType) {
+        this.enterpriseType = enterpriseType;
+    }
+    
+    public Enterprise(String name,EnterpriseType type){
+        super(name);
+        this.enterpriseType=type;
+        organizationDirectory=new OrganizationDirectory();
+    }
+    public abstract ArrayList<Organization.Type> getSupportedOrganization();
     
 }

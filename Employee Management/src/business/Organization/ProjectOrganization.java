@@ -5,6 +5,9 @@
  */
 package business.Organization;
 
+import business.Role.ProjectManagerLogin;
+import business.Role.Role;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,4 +20,11 @@ public class ProjectOrganization extends Organization{
     public ProjectOrganization() {
         super(Organization.Type.Project.getValue());
     }
+    
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new ProjectManagerLogin());
+        return roles;
+    } 
 }

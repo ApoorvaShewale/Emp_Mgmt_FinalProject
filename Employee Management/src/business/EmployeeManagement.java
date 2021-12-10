@@ -43,7 +43,14 @@ public class EmployeeManagement extends Organization{
         }
         return true;
     }
-
+    
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roleList=new ArrayList<Role>();
+        roleList.add(new SystemAdminLogin());
+        return roleList;
+    }
+    
     private EmployeeManagement(){
         super(null);
         networkList=new ArrayList<Network>();

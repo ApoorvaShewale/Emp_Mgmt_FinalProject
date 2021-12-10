@@ -5,6 +5,11 @@
  */
 package business.Organization;
 
+import business.Role.AssetManagerLogin;
+import business.Role.Role;
+import business.Role.TechSupportLogin;
+import java.util.ArrayList;
+
 /**
  *
  * @author ApoorvaShewale
@@ -16,4 +21,13 @@ public class SupportOrganization extends Organization{
     public SupportOrganization() {
         super(Organization.Type.Support.getValue());
     }
+    
+    
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList();
+        roles.add(new AssetManagerLogin());
+        roles.add(new TechSupportLogin());
+        return roles;
+    } 
 }

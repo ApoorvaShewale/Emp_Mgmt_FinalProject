@@ -5,6 +5,7 @@
  */
 package business.Enterprise;
 
+import business.Organization.Organization;
 import business.Role.CompensationBenefitsHRLogin;
 import business.Role.LearningDevelopmentHRLogin;
 import business.Role.Role;
@@ -29,6 +30,13 @@ public class HREnterprise extends Enterprise {
         roles.add(new CompensationBenefitsHRLogin());
         roles.add(new LearningDevelopmentHRLogin());
         return roles;
+    }
+    
+    @Override
+    public ArrayList<Organization.Type> getSupportedOrganization() {
+        ArrayList<Organization.Type> organizations = new ArrayList<>();
+        organizations.add(Type.HR);
+        return organizations;
     }
     
     

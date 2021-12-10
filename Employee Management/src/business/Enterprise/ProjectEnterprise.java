@@ -6,6 +6,7 @@
 package business.Enterprise;
 
 
+import business.Organization.Organization;
 import business.Role.ProjectManagerLogin;
 import business.Role.Role;
 import java.util.ArrayList;
@@ -17,8 +18,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings("unchecked")
 public class ProjectEnterprise extends Enterprise {
-
-      public ProjectEnterprise(String name){
+public ProjectEnterprise(String name){
         super(name,EnterpriseType.ManageHR);
     }
     @Override
@@ -26,6 +26,13 @@ public class ProjectEnterprise extends Enterprise {
         ArrayList<Role> roles = new ArrayList<>();
         roles.add(new ProjectManagerLogin());
         return roles;
+    }
+    
+    @Override
+    public ArrayList<Organization.Type> getSupportedOrganization() {
+        ArrayList<Organization.Type> organizations = new ArrayList<>();
+        organizations.add(Type.Project);
+        return organizations;
     }
     
     }
