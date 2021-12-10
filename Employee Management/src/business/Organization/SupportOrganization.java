@@ -12,5 +12,8 @@ package business.Organization;
 
 @SuppressWarnings("unchecked")
 public class SupportOrganization extends Organization{
-
+    
+    public SupportOrganization() {
+        super(Organization.Type.Support.getValue());
+    }
 }

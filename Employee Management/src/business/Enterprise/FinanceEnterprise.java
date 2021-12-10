@@ -6,6 +6,7 @@
 package business.Enterprise;
 
 
+import business.Role.FinanceManagerLogin;
 import business.Role.Role;
 import java.util.ArrayList;
 
@@ -17,7 +18,15 @@ import java.util.ArrayList;
 @SuppressWarnings("unchecked")
 public class FinanceEnterprise extends Enterprise {
 
-    
+    public FinanceEnterprise(String name){
+        super(name,EnterpriseType.ManageHR);
+    }
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles = new ArrayList<>();
+        roles.add(new FinanceManagerLogin());
+        return roles;
+    }
     
    
 }
