@@ -17,9 +17,7 @@ import java.util.ArrayList;
 @SuppressWarnings("unchecked")
 public class FinanceEnterprise extends Enterprise {
 
-    public ArrayList<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
+    
     
    
 }

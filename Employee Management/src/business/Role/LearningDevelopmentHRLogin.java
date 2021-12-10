@@ -18,8 +18,13 @@ import javax.swing.JPanel;
 @SuppressWarnings("unchecked")
 public class LearningDevelopmentHRLogin extends Role{
 
-    public JPanel createWorkArea(JPanel userLoginContainer, JPanel userContainer, UserAccount account, Organization department, Enterprise enterprise, EmployeeManagement business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public LearningDevelopmentHRLogin(){
+        this.type = RoleType.LearningDevelopmentHR;
+    }
+    @Override
+    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organizaion, Enterprise enterprise, EmployeeManagement system) {
+//        return new ManageAdminWorkerjPanel(userLoginContainer,container,enterprise,organization,account, system);
+        return null;
     }
 
 }

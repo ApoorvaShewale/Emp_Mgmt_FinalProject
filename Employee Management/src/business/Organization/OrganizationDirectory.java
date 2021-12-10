@@ -5,6 +5,8 @@
  */
 package business.Organization;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ApoorvaShewale
@@ -12,5 +14,30 @@ package business.Organization;
 
 @SuppressWarnings("unchecked")
 public class OrganizationDirectory {
+    
+    private ArrayList<Organization> departmentList;
+
+    public OrganizationDirectory() {
+        departmentList = new ArrayList<Organization>();
+    }
+
+    public ArrayList<Organization> getOrganizationList() {
+        return departmentList;
+    }
+    
+    public Organization createOrganization(Organization.Type type){
+        Organization department = null;
+
+       
+        return department;
+    }
+    
+    public boolean checkIfOrganizationIsUnique(String username){
+        for (Organization department : departmentList){
+            if (department.getName().equals(username))
+                return false;
+        }
+        return true;
+    }
     
     }

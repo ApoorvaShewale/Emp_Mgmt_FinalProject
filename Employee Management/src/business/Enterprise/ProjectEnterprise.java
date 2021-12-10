@@ -17,8 +17,6 @@ import java.util.ArrayList;
 @SuppressWarnings("unchecked")
 public class ProjectEnterprise extends Enterprise {
 
-    public ArrayList<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+      
     
     }

@@ -5,12 +5,41 @@
  */
 package ui.ManageAdmin;
 
+import business.EmployeeManagement;
+import business.Enterprise.Enterprise;
+import business.Network.Network;
+import business.Organization.Organization;
+import business.UserAccount.UserAccount;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ApoorvaShewale
  */
 @SuppressWarnings("unchecked")
 public class ManageAdminWorkerPanel extends javax.swing.JPanel {
+    
+    private EmployeeManagement system;
+    private Enterprise enterprise;
+    private Organization organization;
+    private JPanel container,logincontainerJPanel;
+    private UserAccount user;
+    public ManageAdminWorkerPanel(JPanel logincontainerJPanel,JPanel container,Enterprise enterprise,Organization organization, UserAccount user, EmployeeManagement system) {
+        initComponents();
+        this.system=system;
+        this.container=container;
+        this.logincontainerJPanel=logincontainerJPanel;
+        this.enterprise=enterprise;
+        this.user=user;
+        this.loggedmhwjLabel.setText("Welcome, "+user.getEmployee()+"("+user.getRole()+")");
+        String networkname="";
+        for(Network network:system.getNetworkList()){
+            networkname=network.getName();
+        }
+        this.networknamejLabel.setText(networkname);
+        enterprisenamejLabel.setText(enterprise.getName());
+    }
 
     
     /**
@@ -147,6 +176,56 @@ public class ManageAdminWorkerPanel extends javax.swing.JPanel {
 
     private void mhwLogoutjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mhwLogoutjButtonActionPerformed
 
+        JLabel jLabel3;
+        JLabel jLabel1;
+        JPanel jPanel6;
+    
+        logincontainerJPanel.setVisible(true);
+        container.removeAll();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(new javax.swing.border.MatteBorder(null));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        jLabel1.setText("You Are Signed Out");
+
+        jLabel3.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/employee1.npg"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(263, 263, 263)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(687, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGap(99, 99, 99)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 959, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(896, Short.MAX_VALUE)))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(349, 349, 349)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(565, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGap(95, 95, 95)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(553, Short.MAX_VALUE)))
+        );
+        container.add(jPanel6);
+                                    
     }//GEN-LAST:event_mhwLogoutjButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

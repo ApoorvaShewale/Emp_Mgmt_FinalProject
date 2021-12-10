@@ -5,6 +5,10 @@
  */
 package business;
 
+import business.Employee.Employee;
+import business.Role.SystemAdminLogin;
+import business.UserAccount.UserAccount;
+
 
 /**
  *
@@ -13,13 +17,18 @@ package business;
 
 @SuppressWarnings("unchecked")
 public class Configure {
-    
     public static EmployeeManagement configure(){
+    
+    EmployeeManagement system = EmployeeManagement.getInstance();
         
         
-        return null;
         
         
-    }
+        Employee employee = system.getEmployeeDirectory().createEmployee("sysadmin");
+        
+        UserAccount ua = system.getUserAccountDirectory().createUser("sysadmin", "sysadmin", employee, new SystemAdminLogin());
+        
+        return system;
+    } 
     
 }
