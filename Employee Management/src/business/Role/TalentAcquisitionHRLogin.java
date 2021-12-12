@@ -9,6 +9,7 @@ import business.EmployeeManagement;
 import business.Organization.Organization;
 import business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.TalentAndAcquisitionHR.TalentAcquisitionWorkerPanel;
 
 /**
  *
@@ -22,8 +23,8 @@ public class TalentAcquisitionHRLogin extends Role{
     }
 
     @Override
-    public JPanel createWorkArea(JPanel userLoginContainer, JPanel userContainer, UserAccount account, Organization organization, EmployeeManagement business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organization, EmployeeManagement system) {
+        return new TalentAcquisitionWorkerPanel(userLoginContainer,container,organization,account, system);
     }
 
 }
