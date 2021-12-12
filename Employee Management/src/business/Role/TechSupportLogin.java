@@ -9,10 +9,11 @@ import business.EmployeeManagement;
 import business.Organization.Organization;
 import business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.TechSupportManager.TechSupportWorkerPanel;
 
 /**
  *
- * @author ApoorvaShewale
+ * @author Apoorva Shewale
  */
 @SuppressWarnings("unchecked")
 public class TechSupportLogin extends Role{
@@ -20,11 +21,8 @@ public class TechSupportLogin extends Role{
     public TechSupportLogin(){
         this.type = RoleType.TechSupport;
     }
-
     @Override
-    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organizaion, EmployeeManagement system) {
-//        return new ManageAdminWorkerjPanel(userLoginContainer,container,enterprise,organization,account, system);
-        return null;
+    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organization, EmployeeManagement system) {
+        return new TechSupportWorkerPanel(userLoginContainer,container,organization,account, system);
     }
-
 }
