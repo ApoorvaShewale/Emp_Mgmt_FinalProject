@@ -168,7 +168,10 @@ public class SystemAdminWorkerjPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_manageHRjButtonActionPerformed
 
     private void manageITSupportjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageITSupportjButtonActionPerformed
-   
+        SystemAdminWorkerITSupportPanel systemAdminWorkerITSupportPanel=new SystemAdminWorkerITSupportPanel(logincontainerJPanel,container,system.getOrganizationDirectory(), user ,system);
+        container.add("systemAdminWorkerITSupportPanel",systemAdminWorkerITSupportPanel);
+        CardLayout layout=(CardLayout)container.getLayout();
+        layout.next(container); 
     }//GEN-LAST:event_manageITSupportjButtonActionPerformed
 
     private void mangeProjectsjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mangeProjectsjButtonActionPerformed
@@ -179,7 +182,10 @@ public class SystemAdminWorkerjPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_mangeProjectsjButtonActionPerformed
 
     private void mangeFinancejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mangeFinancejButtonActionPerformed
-
+ SystemAdminWorkerFinancePanel systemAdminWorkerFinancePanel=new SystemAdminWorkerFinancePanel(logincontainerJPanel,container,system.getOrganizationDirectory(), user ,system);
+        container.add("systemAdminWorkerFinancePanel",systemAdminWorkerFinancePanel);
+        CardLayout layout=(CardLayout)container.getLayout();
+        layout.next(container); 
     }//GEN-LAST:event_mangeFinancejButtonActionPerformed
 
 
