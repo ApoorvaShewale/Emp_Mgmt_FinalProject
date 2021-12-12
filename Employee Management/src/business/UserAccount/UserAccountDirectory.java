@@ -45,6 +45,31 @@ public class UserAccountDirectory {
         return userAccount;
     }
     
+    public UserAccount createUserAccount(String username, String password, Employee employee, Role role, String firstname,String lastname,String dob,
+            String sex,String address,String city,String state,int zipcode,Long phone,
+            String emailId,Long ssn,String employeeid){
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setEmployee(employee);
+        userAccount.setRole(role);
+        userAccount.setFirstname(firstname);
+        userAccount.setLastname(lastname);
+        userAccount.setDob(dob);
+        userAccount.setSex(sex);
+        userAccount.setAddress(address);
+        userAccount.setCity(city);
+        userAccount.setState(state);
+        userAccount.setZipcode(zipcode);
+        userAccount.setPhone(phone);
+        userAccount.setEMailId(emailId);
+        userAccount.setSsnno(ssn);
+        userAccount.setEmployeeid(employeeid);
+        userAccount.setStatus("Available");
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+    
     public boolean checkIfUsernameIsUnique(String username){
         return userAccountList.stream().noneMatch((ua) -> (ua.getUsername().equals(username)));
     }
@@ -74,15 +99,11 @@ public class UserAccountDirectory {
     }
     
     public boolean IsTechSupport(String userrole){
-        return userrole.equals("TEch Support");
+        return userrole.equals("IT Tech Support");
     }
     
     public boolean IsAssetManager(String userrole){
         return userrole.equals("Asset Manager");
-    }
-    
-    public boolean IsManageAdmin(String userrole){
-        return userrole.equals("Manage Admin");
     }
     
         

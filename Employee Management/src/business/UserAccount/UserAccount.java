@@ -19,8 +19,8 @@ import business.WorkQueue.WorkQueue;
 @SuppressWarnings("unchecked")
 public class UserAccount {
     
-    private String firstname,lastname,sex,mailId,address,city,state,dob;
-    private String emergencycontactname,ngoid,eventname,status,relation;
+    private String firstname,lastname,sex,emailId,address,city,state,dob;
+    private String employeeid,status;
     private Employee employee;
     private Role role;
     
@@ -37,27 +37,20 @@ public class UserAccount {
         this.status = status;
     }
     private int zipcode;
-    private Long phone,emergencycontactnumber,ssnno;
+    private Long phone,ssnno;
     
     private String username;
     private String password;
 
-    public String getNgoid() {
-        return ngoid;
+    public String getEmployeeid() {
+        return employeeid;
     }
 
-    public void setNgoid(String ngoid) {
-        this.ngoid = ngoid;
+    public void setEmployeeid(String employeeid) {
+        this.employeeid = employeeid;
     }
 
-    public String getEventname() {
-        return eventname;
-    }
-
-    public void setEventname(String eventname) {
-        this.eventname = eventname;
-    }
-
+    
     public String getFirstname() {
         return firstname;
     }
@@ -82,12 +75,12 @@ public class UserAccount {
         this.sex = sex;
     }
 
-    public String getMailId() {
-        return mailId;
+    public String getEMailId() {
+        return emailId;
     }
 
-    public void setMailId(String mailId) {
-        this.mailId = mailId;
+    public void setEMailId(String emailId) {
+        this.emailId = emailId;
     }
 
     public String getAddress() {
@@ -105,7 +98,7 @@ public class UserAccount {
     public void setCity(String city) {
         this.city = city;
     }
-
+    
     public String getState() {
         return state;
     }
@@ -114,20 +107,13 @@ public class UserAccount {
         this.state = state;
     }
 
+
     public String getDob() {
         return dob;
     }
 
     public void setDob(String dob) {
         this.dob = dob;
-    }
-
-    public String getEmergencycontactname() {
-        return emergencycontactname;
-    }
-
-    public void setEmergencycontactname(String emergencycontactname) {
-        this.emergencycontactname = emergencycontactname;
     }
 
     public int getZipcode() {
@@ -146,26 +132,9 @@ public class UserAccount {
         this.phone = phone;
     }
 
-    public Long getEmergencycontactnumber() {
-        return emergencycontactnumber;
-    }
-
-    public void setEmergencycontactnumber(Long emergencycontactnumber) {
-        this.emergencycontactnumber = emergencycontactnumber;
-    }
-
     public Long getSsnno() {
         return ssnno;
     }
-
-    public String getRelation() {
-        return relation;
-    }
-
-    public void setRelation(String relation) {
-        this.relation = relation;
-    }
-
     
     public void setSsnno(Long ssnno) {
         this.ssnno = ssnno;
