@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Saamu
+ * @author herikahareshkoshti
  */
 @SuppressWarnings("unchecked")
 public class ProjectManagerWorkerTraineesPanel extends javax.swing.JPanel {
