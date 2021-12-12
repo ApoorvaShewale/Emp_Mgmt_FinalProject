@@ -194,7 +194,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d1" green="b4" red="af" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Resolve"/>
+            <Property name="text" type="java.lang.String" value="Update Status"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder roundedCorners="true"/>
@@ -243,9 +243,6 @@
                 <Column editable="false" title="Result" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
               </Table>
-            </Property>
-            <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" id="Window" palette="2" red="ff" type="palette"/>
             </Property>
           </Properties>
           <Events>

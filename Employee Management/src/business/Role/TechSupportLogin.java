@@ -13,7 +13,7 @@ import ui.TechSupportManager.TechSupportWorkerPanel;
 
 /**
  *
- * @author Apoorva Shewale
+ * @author ApoorvaShewale
  */
 @SuppressWarnings("unchecked")
 public class TechSupportLogin extends Role{

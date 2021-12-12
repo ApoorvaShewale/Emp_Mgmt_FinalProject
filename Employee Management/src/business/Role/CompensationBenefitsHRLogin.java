@@ -7,8 +7,10 @@ package business.Role;
 
 import business.Organization.Organization;
 import business.EmployeeManagement;
+import business.Organization.HROrganization;
 import business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.CompensationAndBenefitsHR.CompensationBenefitsHRWorkerPanel;
 
 /**
  *
@@ -22,8 +24,8 @@ public class CompensationBenefitsHRLogin extends Role{
     }
 
     @Override
-    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organizaion, EmployeeManagement system)  {
-        return null; 
+    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organization, EmployeeManagement system) {
+        return new CompensationBenefitsHRWorkerPanel(userLoginContainer,container,organization,account, system);
     }
 
 }

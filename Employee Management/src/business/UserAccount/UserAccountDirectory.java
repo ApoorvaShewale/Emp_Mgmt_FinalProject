@@ -94,6 +94,10 @@ public class UserAccountDirectory {
         return userrole.equals("Project Manager");
     }
     
+    public boolean IsFinanceManager(String userrole){
+        return userrole.equals("Finance Manager");
+    }
+    
     public boolean IsEmployee(String userrole){
         return userrole.equals("Employee");
     }
@@ -105,6 +109,5 @@ public class UserAccountDirectory {
     public boolean IsAssetManager(String userrole){
         return userrole.equals("Asset Manager");
     }
-    
         
 }
