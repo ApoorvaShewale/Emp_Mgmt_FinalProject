@@ -170,7 +170,6 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
                 "User", "Role", "Employee"
             }
         ));
-        enterprisessjTable.setGridColor(java.awt.SystemColor.window);
         enterprisessjTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enterprisessjTableMouseClicked(evt);
@@ -186,7 +185,7 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
         jLabel41.setText("First Name");
 
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel43.setText("Date of Birth");
+        jLabel43.setText("Birth Year");
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel44.setText("Sex");
@@ -214,7 +213,7 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel51.setText("SSN No");
 
-        sexjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Both", "Other" }));
+        sexjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "I prefer not to say", "Other" }));
 
         yearjComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
