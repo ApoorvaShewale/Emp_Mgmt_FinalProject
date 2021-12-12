@@ -8,6 +8,7 @@ package business.Organization;
 import business.Employee.EmployeeDirectory;
 import business.Projects.ProjectsDirectory;
 import business.Role.Role;
+import business.Teams.TeamsDirectory;
 import business.Trainees.TraineesDirectory;
 import business.Trainings.TrainingsDirectory;
 import business.UserAccount.UserAccountDirectory;
@@ -28,6 +29,7 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private ProjectsDirectory projectsDirectory;
+    private TeamsDirectory TeamsDirectory;
     private TrainingsDirectory TrainingsDirectory;
     private TraineesDirectory TraineesDirectory;
     
@@ -53,6 +55,7 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         projectsDirectory=new ProjectsDirectory();
+        TeamsDirectory=new TeamsDirectory();
         TrainingsDirectory=new TrainingsDirectory();
         TraineesDirectory=new TraineesDirectory();
     }
@@ -69,7 +72,9 @@ public abstract class Organization {
         return projectsDirectory;
     }
     
-    
+    public TeamsDirectory getTeamsDirectory(){
+        return TeamsDirectory;
+    }
     
     public TrainingsDirectory getTrainingsDirectory(){
         return TrainingsDirectory;
