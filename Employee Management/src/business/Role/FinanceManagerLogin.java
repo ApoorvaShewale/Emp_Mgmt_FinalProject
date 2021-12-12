@@ -9,6 +9,7 @@ import business.Organization.Organization;
 import business.EmployeeManagement;
 import business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.FinanceManager.FinanceManagerWorkerPanel;
 
 /**
  *
@@ -22,9 +23,8 @@ public class FinanceManagerLogin extends Role{
     }
 
     @Override
-    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organizaion, EmployeeManagement system)  {
-       
-        return null;
+    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organization, EmployeeManagement system) {
+        return new FinanceManagerWorkerPanel(userLoginContainer,container,organization,account, system);
     }
 
 }

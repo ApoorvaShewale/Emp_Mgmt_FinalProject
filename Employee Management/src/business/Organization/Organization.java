@@ -64,6 +64,10 @@ public abstract class Organization {
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
+        projectsDirectory=new ProjectsDirectory();
+        TeamsDirectory=new TeamsDirectory();
+        TrainingsDirectory=new TrainingsDirectory();
+        TraineesDirectory=new TraineesDirectory();
     }
 
     public abstract ArrayList<Role> getSupportedRole();
