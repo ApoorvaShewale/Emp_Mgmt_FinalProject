@@ -156,6 +156,12 @@ public class SystemAdminWorkerProjectPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Project Name");
 
+        budgetjTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                budgetjTextFieldActionPerformed(evt);
+            }
+        });
+
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Estimated Budget");
 
@@ -415,7 +421,7 @@ public class SystemAdminWorkerProjectPanel extends javax.swing.JPanel {
             budgetCost=Double.parseDouble(budget);
         }
         catch(Exception ex){
-            JOptionPane.showMessageDialog(this, "Invalid Date.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Invalid Budget.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
@@ -641,6 +647,10 @@ public class SystemAdminWorkerProjectPanel extends javax.swing.JPanel {
     private void yearjComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearjComboBox1ActionPerformed
         calcDate1();
     }//GEN-LAST:event_yearjComboBox1ActionPerformed
+
+    private void budgetjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetjTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_budgetjTextFieldActionPerformed
 
     private void DisplayProjects() {
         DefaultTableModel model = (DefaultTableModel) projectsjTable.getModel();

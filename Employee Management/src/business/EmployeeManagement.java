@@ -5,7 +5,6 @@
  */
 package business;
 
-import business.Network.Network;
 import business.Organization.Organization;
 import business.Organization.OrganizationDirectory;
 import business.Role.Role;
