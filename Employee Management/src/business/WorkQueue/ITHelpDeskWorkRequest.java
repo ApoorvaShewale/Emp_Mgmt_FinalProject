@@ -7,7 +7,7 @@ package business.WorkQueue;
 
 /**
  *
- * @author Apoorva Shewale
+ * @author ApoorvaShewale
  */
 public class ITHelpDeskWorkRequest extends WorkRequest {
     private String requesteResult;

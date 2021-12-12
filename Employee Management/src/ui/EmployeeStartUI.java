@@ -248,7 +248,11 @@ public class EmployeeStartUI extends javax.swing.JFrame {
                 system.getUserAccountDirectory().IsEmployee(userAccount.getRole().toString()) ||
                 system.getUserAccountDirectory().IsLearningAndDevelopmentHR(userAccount.getRole().toString()) ||
                 system.getUserAccountDirectory().IsProjectManager(userAccount.getRole().toString()) ||
-                system.getUserAccountDirectory().IsTalentAndAcquistionHR(userAccount.getRole().toString())){
+                system.getUserAccountDirectory().IsTalentAndAcquistionHR(userAccount.getRole().toString()) ||
+                system.getUserAccountDirectory().IsCompensationAndBenefitsHR(userAccount.getRole().toString()) ||
+                system.getUserAccountDirectory().IsAssetManager(userAccount.getRole().toString()) ||
+                system.getUserAccountDirectory().IsTechSupport(userAccount.getRole().toString()) ||
+                system.getUserAccountDirectory().IsFinanceManager(userAccount.getRole().toString())){
                 CardLayout layout=(CardLayout)container.getLayout();
                 container.add("workArea",userAccount.getRole().createWorkArea(logincontainerJPanel,container, userAccount, inOrganization, system));
                 layout.next(container);
