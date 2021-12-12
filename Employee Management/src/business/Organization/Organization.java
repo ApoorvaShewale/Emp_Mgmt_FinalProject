@@ -8,6 +8,8 @@ package business.Organization;
 import business.Employee.EmployeeDirectory;
 import business.Projects.ProjectsDirectory;
 import business.Role.Role;
+import business.Trainees.TraineesDirectory;
+import business.Trainings.TrainingsDirectory;
 import business.UserAccount.UserAccountDirectory;
 import business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
@@ -26,7 +28,8 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private ProjectsDirectory projectsDirectory;
-
+    private TrainingsDirectory TrainingsDirectory;
+    private TraineesDirectory TraineesDirectory;
     
     public enum Type{
         ManageAdmin("Manage Admin"),
@@ -50,6 +53,8 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         projectsDirectory=new ProjectsDirectory();
+        TrainingsDirectory=new TrainingsDirectory();
+        TraineesDirectory=new TraineesDirectory();
     }
     
     public Organization() {
@@ -64,6 +69,16 @@ public abstract class Organization {
         return projectsDirectory;
     }
     
+    
+    
+    public TrainingsDirectory getTrainingsDirectory(){
+        return TrainingsDirectory;
+    }
+    
+    public TraineesDirectory getTraineesDirectory(){
+        return TraineesDirectory;
+    }
+    
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;
     }
@@ -71,7 +86,6 @@ public abstract class Organization {
     public EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
     }
-    
    
     public WorkQueue getWorkQueue() {
         return workQueue;
