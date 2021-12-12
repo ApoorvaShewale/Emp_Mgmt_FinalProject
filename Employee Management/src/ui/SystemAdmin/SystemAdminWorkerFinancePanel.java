@@ -92,7 +92,7 @@ public class SystemAdminWorkerFinancePanel extends javax.swing.JPanel {
         loggedmhwjLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         networknamejLabel.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        networknamejLabel.setText("Manage Finnace Users");
+        networknamejLabel.setText("Manage Finance Users");
         networknamejLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jButton4.setBackground(new java.awt.Color(175, 180, 209));
@@ -408,7 +408,7 @@ public class SystemAdminWorkerFinancePanel extends javax.swing.JPanel {
         }
         Organization organization = (Organization) organizationjComboBox.getSelectedItem();
 
-        UserAccount adminuser = (UserAccount)enterprisessjTable.getValueAt(selectedRow, 3);
+        UserAccount adminuser = (UserAccount)enterprisessjTable.getValueAt(selectedRow, 0);
         Employee employee =adminuser.getEmployee();
         system.getEmployeeDirectory().getEmployeeList().remove(employee);
         organization.getUserAccountDirectory().getUserAccountList().remove(adminuser);

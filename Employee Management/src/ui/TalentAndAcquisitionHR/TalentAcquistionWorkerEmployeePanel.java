@@ -765,6 +765,7 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
         this.usernamejTextField.setText("");
         passwordjPasswordField.setText("");
         this.firstnamejTextField.setText("");
+        lastnamejTextField.setText("");
         sexjComboBox.setSelectedIndex(0);
         this.emailIdjTextField.setText("");
         this.phonejTextField.setText("");

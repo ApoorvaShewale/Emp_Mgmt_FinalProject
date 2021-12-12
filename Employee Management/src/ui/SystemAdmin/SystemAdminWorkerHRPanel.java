@@ -408,7 +408,7 @@ public class SystemAdminWorkerHRPanel extends javax.swing.JPanel {
         }
         Organization organization = (Organization) organizationjComboBox.getSelectedItem();
 
-        UserAccount adminuser = (UserAccount)enterprisessjTable.getValueAt(selectedRow, 3);
+        UserAccount adminuser = (UserAccount)enterprisessjTable.getValueAt(selectedRow, 0);
         Employee employee =adminuser.getEmployee();
         system.getEmployeeDirectory().getEmployeeList().remove(employee);
         organization.getUserAccountDirectory().getUserAccountList().remove(adminuser);
@@ -433,6 +433,7 @@ public class SystemAdminWorkerHRPanel extends javax.swing.JPanel {
         String password = String.valueOf(this.adminpasswordjPasswordField.getPassword());
         String fullname = employeeNamejTextField.getText();
 
+        Role role = (Role) rolejComboBox.getSelectedItem();
         
         if(fullname.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please Fill Employee", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -498,6 +499,8 @@ public class SystemAdminWorkerHRPanel extends javax.swing.JPanel {
         adminuser.setUsername(username);
         adminuser.setPassword(password);
         adminuser.getEmployee().setName(fullname);
+        adminuser.setRole(role);
+        JOptionPane.showMessageDialog(null, "User Updated Successfully");
         dB4OUtil.storeSystem(system);
         DisplayEnterpisesAdmins();
     }//GEN-LAST:event_updateEnterprisejButtonActionPerformed
