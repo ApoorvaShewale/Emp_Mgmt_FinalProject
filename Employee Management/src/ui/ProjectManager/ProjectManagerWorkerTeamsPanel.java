@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Saamu
+ * @author herikahareshkoshti
  */
 @SuppressWarnings("unchecked")
 public class ProjectManagerWorkerTeamsPanel extends javax.swing.JPanel {
