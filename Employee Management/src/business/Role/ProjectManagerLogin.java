@@ -9,6 +9,7 @@ import business.Organization.Organization;
 import business.EmployeeManagement;
 import business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.ProjectManager.ProjectManagerWorkerPanel;
 
 /**
  *
@@ -16,14 +17,14 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("unchecked")
 public class ProjectManagerLogin extends Role{
-
+//Authorizes the System and adds enterprises, admins and networks and organizations and Projects
     public ProjectManagerLogin(){
         this.type = RoleType.ProjectManager;
     }
 
     @Override
-    public JPanel createWorkArea(JPanel userLoginContainer, JPanel userContainer, UserAccount account, Organization organization, EmployeeManagement business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organization, EmployeeManagement system) {
+        return new ProjectManagerWorkerPanel(userLoginContainer,container,organization,account, system);
     }
   
 }

@@ -9,6 +9,7 @@ import business.EmployeeManagement;
 import business.Organization.Organization;
 import business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.SystemAdmin.SystemAdminWorkerjPanel;
 
 /**
  *
@@ -16,14 +17,14 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("unchecked")
 public class SystemAdminLogin extends Role{
-    
+  //Authorizes the System and adds enterprises, admins and networks and organizations and Projects  
     public SystemAdminLogin(){
         this.type = RoleType.SystemAdmin;
     }
 
     @Override
-    public JPanel createWorkArea(JPanel userLoginContainer, JPanel userContainer, UserAccount account, Organization organization, EmployeeManagement business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organizaion, EmployeeManagement system) {
+        return new SystemAdminWorkerjPanel(userLoginContainer,container,account, system);
     }
 
 

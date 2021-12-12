@@ -16,14 +16,15 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("unchecked")
 public class TechSupportLogin extends Role{
-    
+ //Authorizes the System and adds enterprises, admins and networks and organizations and Projects   
     public TechSupportLogin(){
         this.type = RoleType.TechSupport;
     }
 
     @Override
-    public JPanel createWorkArea(JPanel userLoginContainer, JPanel userContainer, UserAccount account, Organization organization, EmployeeManagement business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organizaion, EmployeeManagement system) {
+//        return new ManageAdminWorkerjPanel(userLoginContainer,container,enterprise,organization,account, system);
+        return null;
     }
 
 }
