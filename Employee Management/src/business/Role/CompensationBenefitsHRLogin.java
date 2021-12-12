@@ -6,7 +6,6 @@
 package business.Role;
 
 import business.Organization.Organization;
-import business.Enterprise.Enterprise;
 import business.EmployeeManagement;
 import business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -17,14 +16,14 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("unchecked")
 public class CompensationBenefitsHRLogin extends Role{
-
+//Authorizes the System and adds enterprises, admins and networks and organizations and Projects
     public CompensationBenefitsHRLogin(){
         this.type = RoleType.CompensationBenefitsHR;
     }
 
     @Override
     public JPanel createWorkArea(JPanel userLoginContainer, JPanel userContainer, UserAccount account, Organization organization, EmployeeManagement business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null; 
     }
 
 }

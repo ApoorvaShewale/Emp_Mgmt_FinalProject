@@ -6,10 +6,8 @@
 package business.Role;
 
 import business.Organization.Organization;
-import business.Enterprise.Enterprise;
 import business.EmployeeManagement;
 import business.UserAccount.UserAccount;
-//import ui.stardardLogin.AuthorizedWorkArea;
 import javax.swing.JPanel;
 
 /**
@@ -18,13 +16,13 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("unchecked")
 public class AssetManagerLogin extends Role{
-
+//Authorizes the System and adds enterprises, admins and networks and organizations and Projects
     public AssetManagerLogin(){
         this.type = RoleType.AssetManager;
     }
 
     @Override
     public JPanel createWorkArea(JPanel userLoginContainer, JPanel userContainer, UserAccount account, Organization organization, EmployeeManagement business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 }
