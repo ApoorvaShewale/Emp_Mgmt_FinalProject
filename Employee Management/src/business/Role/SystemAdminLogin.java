@@ -22,9 +22,11 @@ public class SystemAdminLogin extends Role{
     public SystemAdminLogin(){
         this.type = RoleType.SystemAdmin;
     }
+
     @Override
-    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organizaion, Enterprise enterprise, EmployeeManagement system) {
-        return new LoginArea(userLoginContainer,container,account, system);
+    public JPanel createWorkArea(JPanel userLoginContainer, JPanel userContainer, UserAccount account, Organization organization, EmployeeManagement business) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 
 }

@@ -7,6 +7,7 @@ package business;
 
 import business.Network.Network;
 import business.Organization.Organization;
+import business.Organization.OrganizationDirectory;
 import business.Role.Role;
 import business.Role.SystemAdminLogin;
 import java.util.ArrayList;
@@ -21,7 +22,8 @@ import java.util.ArrayList;
 public class EmployeeManagement extends Organization{
 
     private static EmployeeManagement business;
-    private ArrayList<Network> networkList;
+    private OrganizationDirectory organizationDirectory;
+    
     public static EmployeeManagement getInstance(){
         if(business==null){
             business=new EmployeeManagement();
@@ -29,20 +31,10 @@ public class EmployeeManagement extends Organization{
         return business;
     }
     
-    public Network createNewNetwork(){
-        Network network=new Network();
-        networkList.add(network);
-        return network;
+    public OrganizationDirectory getOrganizationDirectory() {
+        return organizationDirectory;
     }
     
-    public boolean checkIfNetworkIsUnique(String username){
-        for (Network network : networkList){
-            if (network.getName().equals(username)){
-                return false;
-            }
-        }
-        return true;
-    }
     
     @Override
     public ArrayList<Role> getSupportedRole() {
@@ -53,23 +45,13 @@ public class EmployeeManagement extends Organization{
     
     private EmployeeManagement(){
         super(null);
-        networkList=new ArrayList<Network>();
+        organizationDirectory=new OrganizationDirectory();
     }
 
-    public ArrayList<Network> getNetworkList() {
-        return networkList;
-    }
-
-    public void setNetworkList(ArrayList<Network> networkList) {
-        this.networkList = networkList;
-    }
     
     public boolean checkIfUserIsUnique(String userName){
         if(!this.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){
             return false;
-        }
-        for(Network network:networkList){
-            
         }
         return true;
     }
