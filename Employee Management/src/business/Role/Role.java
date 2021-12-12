@@ -23,7 +23,7 @@ public abstract class Role {
     public enum RoleType{
         ManageAdmin("Manage Admin"),
         AssetManager("Asset Manager"),
-        TechSupport("TEch Support"),
+        TechSupport("IT Tech Support"),
         Employee("Employee"),
         FinanceManager("Finance Manager"),
         ProjectManager("Project Manager"),
@@ -50,8 +50,7 @@ public abstract class Role {
     public abstract JPanel createWorkArea(JPanel userLoginContainer,
             JPanel userContainer, 
             UserAccount account, 
-            Organization department, 
-            Enterprise enterprise, 
+            Organization organization, 
             EmployeeManagement business);
 
     @Override
