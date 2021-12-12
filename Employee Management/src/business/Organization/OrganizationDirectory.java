@@ -16,26 +16,42 @@ import java.util.ArrayList;
 @SuppressWarnings("unchecked")
 public class OrganizationDirectory {
     
-    private ArrayList<Organization> departmentList;
+    private ArrayList<Organization> organizationList;
 
     public OrganizationDirectory() {
-        departmentList = new ArrayList<Organization>();
+         organizationList = new ArrayList<Organization>();
     }
 
     public ArrayList<Organization> getOrganizationList() {
-        return departmentList;
+        return organizationList;
     }
     
     public Organization createOrganization(Organization.Type type){
-        Organization department = null;
+        Organization organization = null;
+        if (type.getValue().equals(Type.HR.getValue())){
+            organization = new HROrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.Support.getValue())){
+            organization = new SupportOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.Finance.getValue())){
+            organization = new FinanceOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.Project.getValue())){
+            organization = new ProjectOrganization();
+            organizationList.add(organization);
+        }
 
        
-        return department;
+        return organization;
     }
     
     public boolean checkIfOrganizationIsUnique(String username){
-        for (Organization department : departmentList){
-            if (department.getName().equals(username))
+        for (Organization organization : organizationList){
+            if (organization.getName().equals(username))
                 return false;
         }
         return true;

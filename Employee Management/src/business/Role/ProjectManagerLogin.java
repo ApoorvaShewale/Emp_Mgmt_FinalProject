@@ -6,7 +6,6 @@
 package business.Role;
 
 import business.Organization.Organization;
-import business.Enterprise.Enterprise;
 import business.EmployeeManagement;
 import business.UserAccount.UserAccount;
 import javax.swing.JPanel;
