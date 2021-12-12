@@ -9,6 +9,7 @@ import business.Organization.Organization;
 import business.EmployeeManagement;
 import business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.AssetManager.AssetManagerWorkerPanel;
 
 /**
  *
@@ -20,9 +21,8 @@ public class AssetManagerLogin extends Role{
     public AssetManagerLogin(){
         this.type = RoleType.AssetManager;
     }
-
     @Override
-    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organizaion, EmployeeManagement system) {
-        return null;
+    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organization, EmployeeManagement system) {
+        return new AssetManagerWorkerPanel(userLoginContainer,container,organization,account, system);
     }
 }
