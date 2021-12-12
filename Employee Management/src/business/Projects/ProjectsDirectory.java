@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Apoorva Shewale
+ * @author ApoorvaShewale
  */
 @SuppressWarnings("unchecked")
 public class ProjectsDirectory {

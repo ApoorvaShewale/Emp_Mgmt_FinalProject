@@ -116,7 +116,7 @@ public class TechSupportWorkerPanel extends javax.swing.JPanel {
         jScrollPane3.setViewportView(messagejTextArea);
 
         approveBonusjButton.setBackground(new java.awt.Color(175, 180, 209));
-        approveBonusjButton.setText("Resolve");
+        approveBonusjButton.setText("Update Status");
         approveBonusjButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         approveBonusjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,7 +180,6 @@ public class TechSupportWorkerPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        ithelpRequestsjTable.setGridColor(java.awt.SystemColor.window);
         ithelpRequestsjTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ithelpRequestsjTableMouseClicked(evt);
@@ -251,7 +250,7 @@ public class TechSupportWorkerPanel extends javax.swing.JPanel {
         request.setRequesteResult(message);
         statusjTextField.setText("");
         messagejTextArea.setText("");
-        JOptionPane.showMessageDialog(null, "IT Support Request Resolved");
+        JOptionPane.showMessageDialog(null, "IT Support Request Status Updated");
         dB4OUtil.storeSystem(system);
         popITHelpSupportRequest();
         

@@ -17,7 +17,7 @@ import ui.TalentAndAcquisitionHR.TalentAcquisitionWorkerPanel;
  */
 @SuppressWarnings("unchecked")
 public class TalentAcquisitionHRLogin extends Role{
-    
+//Authorizes the System and adds enterprises, admins and networks and organizations and Projects   
     public TalentAcquisitionHRLogin(){
         this.type = RoleType.TalentAcquisitionHR;
     }

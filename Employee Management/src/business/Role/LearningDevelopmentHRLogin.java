@@ -17,7 +17,7 @@ import ui.LearningAndDevelopmentHR.LearningDevelopmentHRWorkerPanel;
  */
 @SuppressWarnings("unchecked")
 public class LearningDevelopmentHRLogin extends Role{
-
+//Authorizes the System and adds enterprises, admins and networks and organizations and Projects
     public LearningDevelopmentHRLogin(){
         this.type = RoleType.LearningDevelopmentHR;
     }
