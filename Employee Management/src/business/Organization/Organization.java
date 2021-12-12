@@ -6,6 +6,7 @@
 package business.Organization;
 
 import business.Employee.EmployeeDirectory;
+import business.Projects.ProjectsDirectory;
 import business.Role.Role;
 import business.UserAccount.UserAccountDirectory;
 import business.WorkQueue.WorkQueue;
@@ -24,6 +25,8 @@ public abstract class Organization {
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
+    private ProjectsDirectory projectsDirectory;
+
     
     public enum Type{
         ManageAdmin("Manage Admin"),
@@ -46,6 +49,7 @@ public abstract class Organization {
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
+        projectsDirectory=new ProjectsDirectory();
     }
     
     public Organization() {
@@ -55,6 +59,10 @@ public abstract class Organization {
     }
 
     public abstract ArrayList<Role> getSupportedRole();
+    
+    public ProjectsDirectory getProjectsDirectory(){
+        return projectsDirectory;
+    }
     
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;

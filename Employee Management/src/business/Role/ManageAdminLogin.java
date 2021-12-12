@@ -9,7 +9,6 @@ import business.Organization.Organization;
 import business.Enterprise.Enterprise;
 import business.EmployeeManagement;
 import business.UserAccount.UserAccount;
-import ui.ManageAdmin.ManageAdminWorkerPanel;
 import javax.swing.JPanel;
 
 /**
@@ -22,8 +21,10 @@ public class ManageAdminLogin extends Role{
     public ManageAdminLogin(){
         this.type = RoleType.ManageAdmin;
     }
+
     @Override
-    public JPanel createWorkArea(JPanel userLoginContainer,JPanel container, UserAccount account, Organization organization, Enterprise enterprise, EmployeeManagement system) {
-        return new ManageAdminWorkerPanel(userLoginContainer,container,enterprise,organization,account, system);
+    public JPanel createWorkArea(JPanel userLoginContainer, JPanel userContainer, UserAccount account, Organization organization, EmployeeManagement business) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

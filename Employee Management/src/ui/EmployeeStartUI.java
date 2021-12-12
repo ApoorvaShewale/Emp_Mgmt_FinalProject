@@ -7,21 +7,23 @@ package ui;
 
 import business.DB4OUtil.DB4OUtil;
 import business.Organization.Organization;
-import business.Enterprise.Enterprise;
 import business.EmployeeManagement;
-import business.Network.Network;
 import business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Toolkit;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import ui.Login.ManageAdminJPanel;
-import ui.Login.SystemAdminJPanel;
+import javax.swing.JPanel;
 
 /**
  *
  * @author ApoorvaShewale
  */
 public class EmployeeStartUI extends javax.swing.JFrame {
+
+    /**
+     * Creates new form startUI
+     */
     
     private EmployeeManagement system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
@@ -29,14 +31,13 @@ public class EmployeeStartUI extends javax.swing.JFrame {
         initComponents();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("employee2.jpg")));
         system = dB4OUtil.retrieveSystem();
-//        this.setSize(1480, 1050);
-        
-        this.roleLoginjPanel.setVisible(false);
+        this.setSize(1480, 1050);
+        SignoutjButton.setVisible(false);
+//        for(Organization organization:system.getOrganizationDirectory().getOrganizationList()){
+//            System.out.println(organization.getName());
+//        }
     }
-        
-        
 
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,25 +48,13 @@ public class EmployeeStartUI extends javax.swing.JFrame {
     private void initComponents() {
 
         logincontainerJPanel = new javax.swing.JPanel();
-        roleLoginjPanel = new javax.swing.JPanel();
-        employeeloginBtn = new javax.swing.JButton();
-        ManageLoginBtn = new javax.swing.JButton();
-        sysAdminLoginBtn = new javax.swing.JButton();
-        assetLoginBtn = new javax.swing.JButton();
-        AcquistionHRLoginBtn = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        AcquistionHRLoginBtn1 = new javax.swing.JButton();
-        AcquistionHRLoginBtn2 = new javax.swing.JButton();
-        AcquistionHRLoginBtn3 = new javax.swing.JButton();
-        AcquistionHRLoginBtn4 = new javax.swing.JButton();
-        AcquistionHRLoginBtn5 = new javax.swing.JButton();
         systemAdminLoginjPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         sysadminUsernameJTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         sysadminPasswordField = new javax.swing.JPasswordField();
         loginSysadminbtn = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        SignoutjButton = new javax.swing.JButton();
         container = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -75,137 +64,19 @@ public class EmployeeStartUI extends javax.swing.JFrame {
         setBackground(new java.awt.Color(204, 255, 204));
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
 
-        logincontainerJPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        roleLoginjPanel.setBackground(new java.awt.Color(237, 226, 242));
-        roleLoginjPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Login Here", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Tahoma", 0, 18), new java.awt.Color(153, 51, 255))); // NOI18N
-        roleLoginjPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        employeeloginBtn.setBackground(new java.awt.Color(175, 180, 209));
-        employeeloginBtn.setForeground(new java.awt.Color(0, 0, 102));
-        employeeloginBtn.setText("Employee");
-        employeeloginBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(0, 102, 102)));
-        employeeloginBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                employeeloginBtnActionPerformed(evt);
-            }
-        });
-        roleLoginjPanel.add(employeeloginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 230, 34));
-
-        ManageLoginBtn.setBackground(new java.awt.Color(175, 180, 209));
-        ManageLoginBtn.setForeground(new java.awt.Color(0, 0, 102));
-        ManageLoginBtn.setText("Manage Admin");
-        ManageLoginBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(0, 102, 102)));
-        ManageLoginBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManageLoginBtnActionPerformed(evt);
-            }
-        });
-        roleLoginjPanel.add(ManageLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 230, 34));
-
-        sysAdminLoginBtn.setBackground(new java.awt.Color(175, 180, 209));
-        sysAdminLoginBtn.setForeground(new java.awt.Color(0, 0, 102));
-        sysAdminLoginBtn.setText("System Admin");
-        sysAdminLoginBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(0, 102, 102)));
-        sysAdminLoginBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sysAdminLoginBtnActionPerformed(evt);
-            }
-        });
-        roleLoginjPanel.add(sysAdminLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 230, 34));
-
-        assetLoginBtn.setBackground(new java.awt.Color(175, 180, 209));
-        assetLoginBtn.setForeground(new java.awt.Color(0, 0, 102));
-        assetLoginBtn.setText("Asset Manager");
-        assetLoginBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(0, 102, 102)));
-        assetLoginBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assetLoginBtnActionPerformed(evt);
-            }
-        });
-        roleLoginjPanel.add(assetLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 230, 34));
-
-        AcquistionHRLoginBtn.setBackground(new java.awt.Color(175, 180, 209));
-        AcquistionHRLoginBtn.setForeground(new java.awt.Color(0, 0, 102));
-        AcquistionHRLoginBtn.setText("Talent & Acquisition HR");
-        AcquistionHRLoginBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(0, 102, 102)));
-        AcquistionHRLoginBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AcquistionHRLoginBtnActionPerformed(evt);
-            }
-        });
-        roleLoginjPanel.add(AcquistionHRLoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 230, 34));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/employee2.jpg"))); // NOI18N
-        roleLoginjPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 160, 40));
-
-        AcquistionHRLoginBtn1.setBackground(new java.awt.Color(175, 180, 209));
-        AcquistionHRLoginBtn1.setForeground(new java.awt.Color(0, 0, 102));
-        AcquistionHRLoginBtn1.setText("Compensation and Benefits HR");
-        AcquistionHRLoginBtn1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(0, 102, 102)));
-        AcquistionHRLoginBtn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AcquistionHRLoginBtn1ActionPerformed(evt);
-            }
-        });
-        roleLoginjPanel.add(AcquistionHRLoginBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 230, 34));
-
-        AcquistionHRLoginBtn2.setBackground(new java.awt.Color(175, 180, 209));
-        AcquistionHRLoginBtn2.setForeground(new java.awt.Color(0, 0, 102));
-        AcquistionHRLoginBtn2.setText("Tech Support Manager");
-        AcquistionHRLoginBtn2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(0, 102, 102)));
-        AcquistionHRLoginBtn2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AcquistionHRLoginBtn2ActionPerformed(evt);
-            }
-        });
-        roleLoginjPanel.add(AcquistionHRLoginBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 230, 34));
-
-        AcquistionHRLoginBtn3.setBackground(new java.awt.Color(175, 180, 209));
-        AcquistionHRLoginBtn3.setForeground(new java.awt.Color(0, 0, 102));
-        AcquistionHRLoginBtn3.setText("Project Manager");
-        AcquistionHRLoginBtn3.setActionCommand("Finance Manager");
-        AcquistionHRLoginBtn3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(0, 102, 102)));
-        AcquistionHRLoginBtn3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AcquistionHRLoginBtn3ActionPerformed(evt);
-            }
-        });
-        roleLoginjPanel.add(AcquistionHRLoginBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 230, 34));
-
-        AcquistionHRLoginBtn4.setBackground(new java.awt.Color(175, 180, 209));
-        AcquistionHRLoginBtn4.setForeground(new java.awt.Color(0, 0, 102));
-        AcquistionHRLoginBtn4.setText("Learning And Development");
-        AcquistionHRLoginBtn4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(0, 102, 102)));
-        AcquistionHRLoginBtn4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AcquistionHRLoginBtn4ActionPerformed(evt);
-            }
-        });
-        roleLoginjPanel.add(AcquistionHRLoginBtn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 230, 34));
-
-        AcquistionHRLoginBtn5.setBackground(new java.awt.Color(175, 180, 209));
-        AcquistionHRLoginBtn5.setForeground(new java.awt.Color(0, 0, 102));
-        AcquistionHRLoginBtn5.setText("Finance Manager");
-        AcquistionHRLoginBtn5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(0, 102, 102)));
-        AcquistionHRLoginBtn5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AcquistionHRLoginBtn5ActionPerformed(evt);
-            }
-        });
-        roleLoginjPanel.add(AcquistionHRLoginBtn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 230, 34));
+        logincontainerJPanel.setBackground(new java.awt.Color(237, 226, 242));
 
         systemAdminLoginjPanel.setBackground(new java.awt.Color(237, 226, 242));
-        systemAdminLoginjPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Tahoma", 0, 12), new java.awt.Color(153, 51, 255)), "Sysadmin Login", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Tahoma", 0, 18), new java.awt.Color(153, 0, 255))); // NOI18N
+        systemAdminLoginjPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Tahoma", 0, 12), new java.awt.Color(153, 51, 255)), "Login Here", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Tahoma", 0, 18), new java.awt.Color(153, 0, 255))); // NOI18N
         systemAdminLoginjPanel.setMinimumSize(new java.awt.Dimension(230, 0));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("System Admin Username");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Username");
 
         sysadminUsernameJTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setText("System Admin Password");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Password");
 
         sysadminPasswordField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         sysadminPasswordField.setMinimumSize(new java.awt.Dimension(8, 20));
@@ -214,44 +85,41 @@ public class EmployeeStartUI extends javax.swing.JFrame {
         loginSysadminbtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         loginSysadminbtn.setForeground(new java.awt.Color(0, 0, 102));
         loginSysadminbtn.setText("Login");
-        loginSysadminbtn.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 1, new java.awt.Color(0, 102, 102)));
+        loginSysadminbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         loginSysadminbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginSysadminbtnActionPerformed(evt);
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/employee2.jpg"))); // NOI18N
+        SignoutjButton.setBackground(new java.awt.Color(255, 102, 0));
+        SignoutjButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        SignoutjButton.setText("Logout");
+        SignoutjButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        SignoutjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignoutjButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout systemAdminLoginjPanelLayout = new javax.swing.GroupLayout(systemAdminLoginjPanel);
         systemAdminLoginjPanel.setLayout(systemAdminLoginjPanelLayout);
         systemAdminLoginjPanelLayout.setHorizontalGroup(
             systemAdminLoginjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(systemAdminLoginjPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(systemAdminLoginjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(systemAdminLoginjPanelLayout.createSequentialGroup()
-                        .addGroup(systemAdminLoginjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sysadminUsernameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sysadminPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(systemAdminLoginjPanelLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, systemAdminLoginjPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(loginSysadminbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGroup(systemAdminLoginjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sysadminUsernameJTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sysadminPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loginSysadminbtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SignoutjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         systemAdminLoginjPanelLayout.setVerticalGroup(
             systemAdminLoginjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(systemAdminLoginjPanelLayout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sysadminUsernameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,7 +128,9 @@ public class EmployeeStartUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sysadminPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loginSysadminbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginSysadminbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SignoutjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -269,18 +139,14 @@ public class EmployeeStartUI extends javax.swing.JFrame {
         logincontainerJPanelLayout.setHorizontalGroup(
             logincontainerJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(logincontainerJPanelLayout.createSequentialGroup()
-                .addGroup(logincontainerJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(systemAdminLoginjPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roleLoginjPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(systemAdminLoginjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         logincontainerJPanelLayout.setVerticalGroup(
             logincontainerJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(logincontainerJPanelLayout.createSequentialGroup()
                 .addComponent(systemAdminLoginjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(roleLoginjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         container.setLayout(new java.awt.CardLayout());
@@ -289,6 +155,7 @@ public class EmployeeStartUI extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Hi. Please Let System Admin authorize the System");
         jLabel1.setAutoscrolls(true);
 
@@ -299,23 +166,22 @@ public class EmployeeStartUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jLabel2)))
-                .addContainerGap(957, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addContainerGap(150, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(485, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel2)
+                .addContainerGap())
         );
 
         container.add(jPanel1, "card2");
@@ -326,14 +192,14 @@ public class EmployeeStartUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(logincontainerJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logincontainerJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(logincontainerJPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -341,7 +207,7 @@ public class EmployeeStartUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginSysadminbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSysadminbtnActionPerformed
-      
+        // Get Admin user name
         String username = sysadminUsernameJTextField.getText();
         // Get Password
         char[] passwordstr = sysadminPasswordField.getPassword();
@@ -349,90 +215,108 @@ public class EmployeeStartUI extends javax.swing.JFrame {
 
         //Step1: Check in the system user account directory if you have the user
         UserAccount userAccount=system.getUserAccountDirectory().authenticateUser(username, password);
-        Enterprise inEnterprise=null;
         Organization inOrganization=null;
 
         if(userAccount==null){
-            //Step 2: Go inside each network and check each enterprise
-            for(Network network:system.getNetworkList()){
-                
-           }
-       }
+            //Step 2: Go inside each organization and check if the user is there
+            for(Organization organization:system.getOrganizationDirectory().getOrganizationList()){
+                userAccount=organization.getUserAccountDirectory().authenticateUser(username, password);
+                if(userAccount!=null){
+                    inOrganization=organization;
+                    break;
+                }
+            }
+        }
 
         if(userAccount==null){
             JOptionPane.showMessageDialog(null, "Account Not Found or Wrong Password");
             return;
         }
         else{
-            boolean isSysAdmin=system.getUserAccountDirectory().IsSystemAdmin(userAccount.getRole().toString());
-            if(isSysAdmin){
-                this.roleLoginjPanel.setVisible(true);
-                this.systemAdminLoginjPanel.setVisible(false);
+            if(system.getUserAccountDirectory().IsSystemAdmin(userAccount.getRole().toString()) ||
+                system.getUserAccountDirectory().IsEmployee(userAccount.getRole().toString()) ||
+                system.getUserAccountDirectory().IsLearningAndDevelopmentHR(userAccount.getRole().toString()) ||
+                system.getUserAccountDirectory().IsProjectManager(userAccount.getRole().toString()) ||
+                system.getUserAccountDirectory().IsTalentAndAcquistionHR(userAccount.getRole().toString())){
                 CardLayout layout=(CardLayout)container.getLayout();
-                container.add("workArea",userAccount.getRole().createWorkArea(logincontainerJPanel,container, userAccount, inOrganization, inEnterprise, system));
+                container.add("workArea",userAccount.getRole().createWorkArea(logincontainerJPanel,container, userAccount, inOrganization, system));
                 layout.next(container);
             }
             else{
-                JOptionPane.showMessageDialog(null, "Please Use SysAdmin Account");
+                JOptionPane.showMessageDialog(null, "Dashboard not Ready for : "+userAccount.getRole().toString());
                 return;
             }
+            
         }
         sysadminUsernameJTextField.setText("");
         sysadminPasswordField.setText("");
-                                             
+        loginSysadminbtn.setVisible(false);
+        SignoutjButton.setVisible(true);
+        sysadminUsernameJTextField.setVisible(false);
+        sysadminPasswordField.setVisible(false);
     }//GEN-LAST:event_loginSysadminbtnActionPerformed
 
-    private void employeeloginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeloginBtnActionPerformed
+    private void SignoutjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoutjButtonActionPerformed
+        JLabel jLabel3;
+        JLabel jLabel1;
+        JPanel jPanel6;
 
-    }//GEN-LAST:event_employeeloginBtnActionPerformed
+        logincontainerJPanel.setVisible(true);
+        container.removeAll();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-    private void ManageLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageLoginBtnActionPerformed
-       
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-    }//GEN-LAST:event_ManageLoginBtnActionPerformed
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        jLabel1.setText("You have been Signed Out.");
 
-    private void sysAdminLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sysAdminLoginBtnActionPerformed
-       SystemAdminJPanel sysadminPanel=new SystemAdminJPanel(systemAdminLoginjPanel,roleLoginjPanel,logincontainerJPanel,container,system);
-        CardLayout layout=(CardLayout)container.getLayout();
-        container.add("sysadminJPanel",sysadminPanel);
-        layout.next(container);
-    }//GEN-LAST:event_sysAdminLoginBtnActionPerformed
+        jLabel3.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/employee1.png"))); // NOI18N
 
-    private void assetLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assetLoginBtnActionPerformed
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
 
-    }//GEN-LAST:event_assetLoginBtnActionPerformed
-
-    private void AcquistionHRLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcquistionHRLoginBtnActionPerformed
-
-    }//GEN-LAST:event_AcquistionHRLoginBtnActionPerformed
-
-    private void AcquistionHRLoginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcquistionHRLoginBtn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AcquistionHRLoginBtn1ActionPerformed
-
-    private void AcquistionHRLoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcquistionHRLoginBtn2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AcquistionHRLoginBtn2ActionPerformed
-
-    private void AcquistionHRLoginBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcquistionHRLoginBtn3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AcquistionHRLoginBtn3ActionPerformed
-
-    private void AcquistionHRLoginBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcquistionHRLoginBtn4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AcquistionHRLoginBtn4ActionPerformed
-
-    private void AcquistionHRLoginBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcquistionHRLoginBtn5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AcquistionHRLoginBtn5ActionPerformed
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(263, 263, 263)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(687, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGap(99, 99, 99)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(896, Short.MAX_VALUE)))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(349, 349, 349)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(565, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGap(95, 95, 95)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(553, Short.MAX_VALUE)))
+        );
+        loginSysadminbtn.setVisible(true);
+        SignoutjButton.setVisible(false);
+        sysadminUsernameJTextField.setVisible(true);
+        sysadminPasswordField.setVisible(true);
+        container.add(jPanel6);
+    }//GEN-LAST:event_SignoutjButtonActionPerformed
+    
     public void closeLoginPanel(){
         this.logincontainerJPanel.setVisible(false);
         this.container.removeAll();
-//        this.container.add(welcomelgnjPanel);
-//        this.networksystemName.setText("Your have been Logged Out.");
     }
-
-
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -479,30 +363,17 @@ public class EmployeeStartUI extends javax.swing.JFrame {
             }
         });
     }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AcquistionHRLoginBtn;
-    private javax.swing.JButton AcquistionHRLoginBtn1;
-    private javax.swing.JButton AcquistionHRLoginBtn2;
-    private javax.swing.JButton AcquistionHRLoginBtn3;
-    private javax.swing.JButton AcquistionHRLoginBtn4;
-    private javax.swing.JButton AcquistionHRLoginBtn5;
-    private javax.swing.JButton ManageLoginBtn;
-    private javax.swing.JButton assetLoginBtn;
+    private javax.swing.JButton SignoutjButton;
     private javax.swing.JPanel container;
-    private javax.swing.JButton employeeloginBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JButton loginSysadminbtn;
     public javax.swing.JPanel logincontainerJPanel;
-    public javax.swing.JPanel roleLoginjPanel;
-    private javax.swing.JButton sysAdminLoginBtn;
     private javax.swing.JPasswordField sysadminPasswordField;
     private javax.swing.JTextField sysadminUsernameJTextField;
     public javax.swing.JPanel systemAdminLoginjPanel;

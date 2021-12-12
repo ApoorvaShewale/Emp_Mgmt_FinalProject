@@ -15,9 +15,9 @@ import java.util.ArrayList;
  */
 
 @SuppressWarnings("unchecked")
-public class ManageOrganization extends Organization{
+public class ManageOrganization_old extends Organization{
 
-    public ManageOrganization() {
+    public ManageOrganization_old() {
         super(Organization.Type.ManageAdmin.getValue());
     }
     
