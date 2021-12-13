@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author herikahareshkoshti
+ * @author ApoorvaShewale
  */
 @SuppressWarnings("unchecked")
 public class FinanceManagerWorkerPanel extends javax.swing.JPanel {

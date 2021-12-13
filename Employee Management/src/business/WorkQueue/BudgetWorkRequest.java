@@ -7,8 +7,9 @@ package business.WorkQueue;
 
 /**
  *
- * @author Apoorva Shewale
+ * @author ApoorvaShewale
  */
+@SuppressWarnings("unchecked")
 public class BudgetWorkRequest extends WorkRequest{
      private String requesteResult,budgetfor;
     private double budget;

@@ -66,7 +66,7 @@ public class EmployeeWorkerPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         loggedmhwjLabel = new javax.swing.JLabel();
         networknamejLabel = new javax.swing.JLabel();
-        assignProjectManagerjButton3 = new javax.swing.JButton();
+        supportrequestjButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         projectNamejTextField = new javax.swing.JTextField();
@@ -97,15 +97,15 @@ public class EmployeeWorkerPanel extends javax.swing.JPanel {
         loggedmhwjLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         networknamejLabel.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        networknamejLabel.setText("EMPLOYEE DASHBOARD");
+        networknamejLabel.setText("Employee Dashboard");
         networknamejLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        assignProjectManagerjButton3.setBackground(new java.awt.Color(175, 180, 209));
-        assignProjectManagerjButton3.setText("IT Support and Asset Request");
-        assignProjectManagerjButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        assignProjectManagerjButton3.addActionListener(new java.awt.event.ActionListener() {
+        supportrequestjButton3.setBackground(new java.awt.Color(175, 180, 209));
+        supportrequestjButton3.setText("IT Support and Asset Request");
+        supportrequestjButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        supportrequestjButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignProjectManagerjButton3ActionPerformed(evt);
+                supportrequestjButton3ActionPerformed(evt);
             }
         });
 
@@ -119,7 +119,7 @@ public class EmployeeWorkerPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(loggedmhwjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(assignProjectManagerjButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(supportrequestjButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -128,7 +128,7 @@ public class EmployeeWorkerPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loggedmhwjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(networknamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(assignProjectManagerjButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(supportrequestjButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1))
         );
 
@@ -171,26 +171,28 @@ public class EmployeeWorkerPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(startdatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(enddatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(projectNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(budgetjTextField)))))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(startdatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel8)
+                                    .addGap(16, 16, 16)
+                                    .addComponent(enddatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(projectNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(budgetjTextField))))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -281,7 +283,7 @@ public class EmployeeWorkerPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -317,9 +319,12 @@ public class EmployeeWorkerPanel extends javax.swing.JPanel {
         descriptionjTextArea.setText(project.getDescription());
     }//GEN-LAST:event_projectsjTableMouseClicked
 
-    private void assignProjectManagerjButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignProjectManagerjButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_assignProjectManagerjButton3ActionPerformed
+    private void supportrequestjButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supportrequestjButton3ActionPerformed
+        EmployeeWorkerSupportPanel employeeWorkerSupportPanel=new EmployeeWorkerSupportPanel(logincontainerJPanel,container,system.getOrganizationDirectory(), user ,system);
+        CardLayout layout=(CardLayout)container.getLayout();
+        container.add("employeeWorkerSupportPanel",employeeWorkerSupportPanel);
+        layout.next(container);
+    }//GEN-LAST:event_supportrequestjButton3ActionPerformed
 
     private void trainingsjTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trainingsjTableMouseClicked
         // TODO add your handling code here:
@@ -364,7 +369,6 @@ public class EmployeeWorkerPanel extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton assignProjectManagerjButton3;
     private javax.swing.JTextField budgetjTextField;
     private javax.swing.JTextArea descriptionjTextArea;
     private javax.swing.JTextField enddatejTextField;
@@ -386,6 +390,7 @@ public class EmployeeWorkerPanel extends javax.swing.JPanel {
     private javax.swing.JTable projectsjTable;
     private javax.swing.JTextArea skillsjTextArea;
     private javax.swing.JTextField startdatejTextField;
+    private javax.swing.JButton supportrequestjButton3;
     private javax.swing.JTable trainingsjTable;
     // End of variables declaration//GEN-END:variables
 }

@@ -65,7 +65,7 @@ public class ProjectManagerWorkerPanel extends javax.swing.JPanel {
         loggedmhwjLabel = new javax.swing.JLabel();
         networknamejLabel = new javax.swing.JLabel();
         assignProjectManagerjButton3 = new javax.swing.JButton();
-        assignProjectManagerjButton4 = new javax.swing.JButton();
+        requestBudgetjButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         projectNamejTextField = new javax.swing.JTextField();
@@ -117,12 +117,12 @@ public class ProjectManagerWorkerPanel extends javax.swing.JPanel {
             }
         });
 
-        assignProjectManagerjButton4.setBackground(new java.awt.Color(175, 180, 209));
-        assignProjectManagerjButton4.setText("Budget for Bonus and Events");
-        assignProjectManagerjButton4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        assignProjectManagerjButton4.addActionListener(new java.awt.event.ActionListener() {
+        requestBudgetjButton4.setBackground(new java.awt.Color(175, 180, 209));
+        requestBudgetjButton4.setText("Budget Request");
+        requestBudgetjButton4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        requestBudgetjButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignProjectManagerjButton4ActionPerformed(evt);
+                requestBudgetjButton4ActionPerformed(evt);
             }
         });
 
@@ -134,12 +134,12 @@ public class ProjectManagerWorkerPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(networknamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(loggedmhwjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(assignProjectManagerjButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(assignProjectManagerjButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addComponent(loggedmhwjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(assignProjectManagerjButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(requestBudgetjButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +150,7 @@ public class ProjectManagerWorkerPanel extends javax.swing.JPanel {
                         .addComponent(networknamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(assignProjectManagerjButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(assignProjectManagerjButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(requestBudgetjButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(1, 1, 1))
         );
 
@@ -202,25 +202,26 @@ public class ProjectManagerWorkerPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(startdatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(16, 16, 16)
                                 .addComponent(enddatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(projectNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
+                                .addComponent(projectNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(9, 9, 9)
                                 .addComponent(budgetjTextField))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -494,17 +495,22 @@ public class ProjectManagerWorkerPanel extends javax.swing.JPanel {
         CardLayout layout=(CardLayout)container.getLayout();
         container.add("projectManagerWorkerTraineesPanel",projectManagerWorkerTraineesPanel);
         layout.next(container);
-        
-        
     }//GEN-LAST:event_manageTraineesjButtonActionPerformed
 
     private void assignProjectManagerjButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignProjectManagerjButton3ActionPerformed
-        // TODO add your handling code here:
+        ProjectManagerWorkerSupportPanel projectManagerWorkerSupportPanel=new ProjectManagerWorkerSupportPanel(logincontainerJPanel,container,system.getOrganizationDirectory(), user ,system);
+        CardLayout layout=(CardLayout)container.getLayout();
+        container.add("projectManagerWorkerSupportPanel",projectManagerWorkerSupportPanel);
+        layout.next(container);
     }//GEN-LAST:event_assignProjectManagerjButton3ActionPerformed
 
-    private void assignProjectManagerjButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignProjectManagerjButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_assignProjectManagerjButton4ActionPerformed
+    private void requestBudgetjButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestBudgetjButton4ActionPerformed
+        ProjectManagerWorkerBudgetPanel projectManagerWorkerBudgetPanel=new ProjectManagerWorkerBudgetPanel(logincontainerJPanel,container,system.getOrganizationDirectory(), user ,system);
+        CardLayout layout=(CardLayout)container.getLayout();
+        container.add("projectManagerWorkerBudgetPanel",projectManagerWorkerBudgetPanel);
+        layout.next(container);
+        
+    }//GEN-LAST:event_requestBudgetjButton4ActionPerformed
 
     private void trainingsjTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trainingsjTableMouseClicked
         // TODO add your handling code here:
@@ -558,7 +564,6 @@ public class ProjectManagerWorkerPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addTrainingjButton;
     private javax.swing.JButton assignProjectManagerjButton3;
-    private javax.swing.JButton assignProjectManagerjButton4;
     private javax.swing.JTextField budgetjTextField;
     private javax.swing.JTextArea descriptionjTextArea;
     private javax.swing.JTextField enddatejTextField;
@@ -584,6 +589,7 @@ public class ProjectManagerWorkerPanel extends javax.swing.JPanel {
     private javax.swing.JLabel networknamejLabel;
     private javax.swing.JTextField projectNamejTextField;
     private javax.swing.JTable projectsjTable;
+    private javax.swing.JButton requestBudgetjButton4;
     private javax.swing.JTextArea skillsjTextArea;
     private javax.swing.JTextField startdatejTextField;
     private javax.swing.JTextField trainingNamejTextField;

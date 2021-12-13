@@ -113,7 +113,7 @@ public class ProjectManagerWorkerTeamsPanel extends javax.swing.JPanel {
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Create / Update Projects", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Assign Team Member", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP));
 
         assignProjectManagerjButton.setBackground(new java.awt.Color(175, 180, 209));
         assignProjectManagerjButton.setText("Assign");

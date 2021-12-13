@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Apoorva Shewale
+ * @author ApoorvaShewale
  */
 @SuppressWarnings("unchecked")
 public class AssetManagerWorkerPanel extends javax.swing.JPanel {
