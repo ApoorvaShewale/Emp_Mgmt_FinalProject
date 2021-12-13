@@ -185,5 +185,9 @@ public class UserAccount {
     public String toString() {
         return username;
     }
+
+//    public void setSsnno(String ssnno) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
         
 }
