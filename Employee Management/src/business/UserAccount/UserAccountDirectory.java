@@ -74,6 +74,18 @@ public class UserAccountDirectory {
         return userAccountList.stream().noneMatch((ua) -> (ua.getUsername().equals(username)));
     }
     
+    public boolean checkIfPhonenoIsUnique(Long phone){
+        return userAccountList.stream().noneMatch((ua) -> (String.valueOf(ua.getPhone()).equals(String.valueOf(phone))));
+    }
+    
+    public boolean checkIfSSnoIsUnique(Long ssno){
+        return userAccountList.stream().noneMatch((ua) -> (String.valueOf(ua.getSsnno()).equals(String.valueOf(ssno))));
+    }
+    
+    public boolean checkIfEmailidIsUnique(String email){
+        return userAccountList.stream().noneMatch((ua) -> (ua.getEMailId().equalsIgnoreCase(email)));
+    }
+    
     public boolean IsSystemAdmin(String userrole){
         return userrole.equals("SystemAdmin");
     }

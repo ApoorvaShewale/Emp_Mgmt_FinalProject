@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author priyankashinde
+ * @author Saamu
  */
 @SuppressWarnings("unchecked")
 public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
@@ -185,7 +185,7 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
         jLabel41.setText("First Name");
 
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel43.setText("Birth Year");
+        jLabel43.setText("Date of Birth");
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel44.setText("Sex");
@@ -213,7 +213,7 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel51.setText("SSN No");
 
-        sexjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "I prefer not to say", "Other" }));
+        sexjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Both", "Other" }));
 
         yearjComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -573,6 +573,17 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Phone Number Should be 10 digits.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        if (ssnno.length()<10 ) {
+            JOptionPane.showMessageDialog(this, "SSno Should be 10 digits.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (ssnno.length()>10 ) {
+            JOptionPane.showMessageDialog(this, "SSno Should be Less Than 10 digits.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         if (zipcode.length()!=5 ) {
             JOptionPane.showMessageDialog(this, "Zip Code Should be 5 digits.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
@@ -597,10 +608,11 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
         }
 
         boolean unique=system.checkIfUserIsUnique(username);
+        
         Organization inOrganization=null;
         //checking if username is taken
         if(unique){
-            //Step 1: Go inside each network and check each enterprise
+            //Step 1: Go inside each organization
             for(Organization organization1:system.getOrganizationDirectory().getOrganizationList()){
                 unique=organization1.getUserAccountDirectory().checkIfUsernameIsUnique(username);
                 if(!unique){
@@ -614,6 +626,57 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Username Already Taken", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        boolean uniquephone=system.checkIfPhoneIsUnique(phoneno);
+        if(uniquephone){
+            //Step 1: Go inside each organization
+            for(Organization organization1:system.getOrganizationDirectory().getOrganizationList()){
+                uniquephone=organization1.getUserAccountDirectory().checkIfPhonenoIsUnique(phoneno);
+                if(!uniquephone){
+                    inOrganization=organization1;
+                    break;
+                }
+            }
+        }
+
+        if(!uniquephone){
+            JOptionPane.showMessageDialog(this, "Phone Number Should be Unique", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        boolean uniqueSSn=system.checkIfSSnIsUnique(ssno);
+        if(uniqueSSn){
+            //Step 1: Go inside each organization
+            for(Organization organization1:system.getOrganizationDirectory().getOrganizationList()){
+                uniqueSSn=organization1.getUserAccountDirectory().checkIfSSnoIsUnique(ssno);
+                if(!uniqueSSn){
+                    inOrganization=organization1;
+                    break;
+                }
+            }
+        }
+
+        if(!uniqueSSn){
+            JOptionPane.showMessageDialog(this, "SSN Should be Unique", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+//        boolean uniqueEmail=system.checkIfEmailIsUnique(mailid);
+//        if(uniqueEmail){
+//            //Step 1: Go inside each organization
+//            for(Organization organization1:system.getOrganizationDirectory().getOrganizationList()){
+//                uniqueEmail=organization1.getUserAccountDirectory().checkIfEmailidIsUnique(mailid);
+//                if(!uniqueEmail){
+//                    inOrganization=organization1;
+//                    break;
+//                }
+//            }
+//        }
+//
+//        if(!uniqueEmail){
+//            JOptionPane.showMessageDialog(this, "Email Id Should be Unique", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
         
         
         UserAccount newuser=system.getUserAccountDirectory().createUserAccount(username, password, employee, role, firstname, lastname, dob, sex, address, city, state, zip, phoneno, mailid, ssno, employeeids);
@@ -629,8 +692,7 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
         displayOrganizationUserAccount();
     }                                          
 
-    private void delUserjButtonActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        
+    private void delUserjButtonActionPerformed(java.awt.event.ActionEvent evt) { 
     }//GEN-LAST:event_saveEnterprisejButtonActionPerformed
 
     private void updateEnterprisejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEnterprisejButtonActionPerformed
@@ -640,6 +702,7 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
             this.usernamejTextField.setText("");
             passwordjPasswordField.setText("");
             this.firstnamejTextField.setText("");
+            lastnamejTextField.setText("");
             sexjComboBox.setSelectedIndex(0);
             this.emailIdjTextField.setText("");
             this.phonejTextField.setText("");
@@ -665,16 +728,23 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
         String password = String.valueOf(passwordRaw);
         String firstname = firstnamejTextField.getText().trim();
         String lastname = lastnamejTextField.getText().trim();
+        String sex = sexjComboBox.getSelectedItem().toString().trim();
+        String mailid = this.emailIdjTextField.getText().trim();
         String phone = this.phonejTextField.getText().trim();
         String address = this.addressjTextField.getText().trim();
         String city = this.cityjTextField.getText().trim();
         String state = this.statejTextField.getText().trim();
         String zipcode = this.zipcodejTextField.getText().trim();
+        String ssnno = this.ssnnumberjTextField.getText().trim();
+        String employeeids = this.employeeidjTextField.getText().trim();
         int zip;
-        Long phoneno;
-        Role role = (Role) rolejComboBox.getSelectedItem();
+        Long phoneno,ssno;
         Employee employee = system.getEmployeeDirectory().createEmployee(employeeName);
-        if(username.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || phone.isEmpty()||  address.isEmpty() || city.isEmpty() || state.isEmpty() || zipcode.isEmpty()
+        Role role = (Role) rolejComboBox.getSelectedItem();
+       
+        if(username.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || sex.isEmpty()
+            || mailid.isEmpty() || phone.isEmpty()|| employeeids.isEmpty() 
+            || address.isEmpty() || city.isEmpty() || state.isEmpty() || zipcode.isEmpty() || ssnno.isEmpty()
             || employee==null || role==null){
             JOptionPane.showMessageDialog(this, "Some Data in Fields is Missing", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
@@ -683,16 +753,32 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
 
         try{
             zip=Integer.parseInt(zipcode);
+            ssno=Long.valueOf(ssnno);
             phoneno=Long.valueOf(phone);
         }
         catch(Exception ex){
-            JOptionPane.showMessageDialog(this, "Phone, Emergency Phone,SSN Number and Zip Code Must be a Positive Number.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Phone, SSN Number and Zip Code Must be a Positive Number.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(!checkMail(mailid)){
+            JOptionPane.showMessageDialog(this, "Check Your Email ID.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         if (phone.length()<10 || phone.length()>10 ) {
             JOptionPane.showMessageDialog(this, "Phone Number Should be 10 digits.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        if (ssnno.length()<10 ) {
+            JOptionPane.showMessageDialog(this, "SSno Should be 10 digits.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (ssnno.length()>10 ) {
+            JOptionPane.showMessageDialog(this, "SSno Should be Less Than 10 digits.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         if (zipcode.length()!=5 ) {
             JOptionPane.showMessageDialog(this, "Zip Code Should be 5 digits.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
@@ -715,10 +801,49 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Your Password length should be less than 120 characters", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        boolean unique=system.checkIfUserIsUnique(username);
+        Organization inOrganization=null;
+        //checking if username is taken
+        if(unique){
+            //Step 1: Go inside each network and check each enterprise
+            for(Organization organization1:system.getOrganizationDirectory().getOrganizationList()){
+                unique=organization1.getUserAccountDirectory().checkIfUsernameIsUnique(username);
+                if(!unique){
+                    inOrganization=organization1;
+                    break;
+                }
+            }
+        }
 
+        if(!unique){
+            JOptionPane.showMessageDialog(this, "Username Already Taken", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        
+        
+//        boolean uniqueEmail=system.checkIfEmailIsUnique(mailid);
+//        if(uniqueEmail){
+//            //Step 1: Go inside each organization
+//            for(Organization organization1:system.getOrganizationDirectory().getOrganizationList()){
+//                uniqueEmail=organization1.getUserAccountDirectory().checkIfEmailidIsUnique(mailid);
+//                if(!uniqueEmail){
+//                    inOrganization=organization1;
+//                    break;
+//                }
+//            }
+//        }
+//
+//        if(!uniqueEmail){
+//            JOptionPane.showMessageDialog(this, "Email Id Should be Unique", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
+        
         UserAccount selUser = (UserAccount)enterprisessjTable.getValueAt(selectedRow, 0);
         selUser.setPassword(password);
         selUser.setRole(role);
+        selUser.setUsername(username);
         selUser.setEmployee(employee);
         selUser.setFirstname(firstname);
         selUser.setLastname(lastname);
@@ -726,6 +851,11 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
         selUser.setPhone(phoneno);
         selUser.setAddress(address);
         selUser.setZipcode(zip);
+        selUser.setSsnno(ssno);
+        selUser.setEmployeeid(employeeids);
+        selUser.setState(state);
+        selUser.setEMailId(mailid);
+        JOptionPane.showMessageDialog(null, "User Updated Successfully.");
         dB4OModel.storeSystem(system);
         displayOrganizationUserAccount();
     }//GEN-LAST:event_updateEnterprisejButtonActionPerformed
@@ -737,6 +867,7 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
             this.usernamejTextField.setText("");
             passwordjPasswordField.setText("");
             this.firstnamejTextField.setText("");
+            lastnamejTextField.setText("");
             sexjComboBox.setSelectedIndex(0);
             this.emailIdjTextField.setText("");
             this.phonejTextField.setText("");
@@ -756,6 +887,7 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
         }
         UserAccount selUser = (UserAccount)enterprisessjTable.getValueAt(selectedRow, 0);
         system.getUserAccountDirectory().getUserAccountList().remove(selUser);
+        JOptionPane.showMessageDialog(null, "User Deleted.");
         dB4OModel.storeSystem(system);
         displayOrganizationUserAccount();
     }//GEN-LAST:event_deleteEnterprisejButtonActionPerformed
