@@ -407,7 +407,7 @@
         <Component class="javax.swing.JLabel" name="jLabel43">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="11"/>
-            <Property name="text" type="java.lang.String" value="Birth Year"/>
+            <Property name="text" type="java.lang.String" value="Date of Birth"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel44">
@@ -484,7 +484,7 @@
               <StringArray count="4">
                 <StringItem index="0" value="Male"/>
                 <StringItem index="1" value="Female"/>
-                <StringItem index="2" value="I prefer not to say"/>
+                <StringItem index="2" value="Both"/>
                 <StringItem index="3" value="Other"/>
               </StringArray>
             </Property>

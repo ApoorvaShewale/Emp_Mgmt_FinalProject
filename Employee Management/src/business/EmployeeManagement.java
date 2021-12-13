@@ -54,6 +54,25 @@ public class EmployeeManagement extends Organization{
         }
         return true;
     }
+        
+    public boolean checkIfPhoneIsUnique(Long phone){
+        if(!this.getUserAccountDirectory().checkIfPhonenoIsUnique(phone)){
+            return false;
+        }
+        return true;
+    }
     
+    public boolean checkIfSSnIsUnique(Long ssno){
+        if(!this.getUserAccountDirectory().checkIfSSnoIsUnique(ssno)){
+            return false;
+        }
+        return true;
+    }
     
+    public boolean checkIfEmailIsUnique(String email){
+        if(!this.getUserAccountDirectory().checkIfEmailidIsUnique(email)){
+            return false;
+        }
+        return true;
+    }
 }
