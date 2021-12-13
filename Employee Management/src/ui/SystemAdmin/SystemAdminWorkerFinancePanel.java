@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ApoorvaShewale
+ * @author herikahareshkoshti
  */
 @SuppressWarnings("unchecked")
 public class SystemAdminWorkerFinancePanel extends javax.swing.JPanel {
@@ -265,7 +265,6 @@ public class SystemAdminWorkerFinancePanel extends javax.swing.JPanel {
                 "User", "Role", "Employee"
             }
         ));
-        enterprisessjTable.setGridColor(java.awt.SystemColor.window);
         enterprisessjTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enterprisessjTableMouseClicked(evt);
@@ -306,7 +305,6 @@ public class SystemAdminWorkerFinancePanel extends javax.swing.JPanel {
         Organization dept = (Organization)organizationjComboBox.getSelectedItem();
         if (dept != null){
             fillRolesComboBox(dept);
-            displayEmployees(dept);
         }
     }//GEN-LAST:event_organizationjComboBoxActionPerformed
 
@@ -373,13 +371,13 @@ public class SystemAdminWorkerFinancePanel extends javax.swing.JPanel {
         }
 
         if(!unique){
-            JOptionPane.showMessageDialog(this, "Manage Admin Username Already Used", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Username Already Used", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         Organization organization = (Organization) organizationjComboBox.getSelectedItem();
         UserAccount entadminuser = organization.getUserAccountDirectory().createUser(username, password, employee, role);
-        JOptionPane.showMessageDialog(null, "Enterprise Admin Added");
+        JOptionPane.showMessageDialog(null, "Organization User Added");
         dB4OUtil.storeSystem(system);
         DisplayEnterpisesAdmins();
     }//GEN-LAST:event_saveEnterprisejButtonActionPerformed
@@ -412,6 +410,7 @@ public class SystemAdminWorkerFinancePanel extends javax.swing.JPanel {
         Employee employee =adminuser.getEmployee();
         system.getEmployeeDirectory().getEmployeeList().remove(employee);
         organization.getUserAccountDirectory().getUserAccountList().remove(adminuser);
+        JOptionPane.showMessageDialog(null, "User Deleted");
         dB4OUtil.storeSystem(system);
         DisplayEnterpisesAdmins();
     }//GEN-LAST:event_deleteEnterprisejButtonActionPerformed
@@ -494,10 +493,12 @@ public class SystemAdminWorkerFinancePanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Username Exists", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+        Role role = (Role) rolejComboBox.getSelectedItem();
         adminuser.setUsername(username);
         adminuser.setPassword(password);
+        adminuser.setRole(role);
         adminuser.getEmployee().setName(fullname);
+        JOptionPane.showMessageDialog(null, "User Updated Successfully");
         dB4OUtil.storeSystem(system);
         DisplayEnterpisesAdmins();
     }//GEN-LAST:event_updateEnterprisejButtonActionPerformed
@@ -548,18 +549,6 @@ public class SystemAdminWorkerFinancePanel extends javax.swing.JPanel {
         }
     }
 
-    private void displayEmployees(Organization dept){
-//        DefaultTableModel model = (DefaultTableModel) organizationUsersjTable.getModel();
-//        
-//        model.setRowCount(0);
-//        
-//        for (Employee employee : dept.getEmployeeDirectory().getEmployeeList()){
-//            Object[] row = new Object[1];
-//            row[0] = employee;
-//            model.addRow(row);
-//        }
-    }
-    
     private void DisplayEnterpisesAdmins() {
         DefaultTableModel model = (DefaultTableModel) enterprisessjTable.getModel();
         

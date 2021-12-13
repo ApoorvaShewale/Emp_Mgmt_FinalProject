@@ -9,11 +9,15 @@ import ui.ProjectManager.*;
 import business.DB4OUtil.DB4OUtil;
 import business.Organization.OrganizationDirectory;
 import business.EmployeeManagement;
+import business.Organization.FinanceOrganization;
+import business.Organization.HROrganization;
 import business.Organization.Organization;
 import business.Projects.Projects;
 import business.Role.ProjectManagerLogin;
 import business.Trainings.Trainings;
 import business.UserAccount.UserAccount;
+import business.WorkQueue.BudgetWorkRequest;
+import business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -32,7 +36,7 @@ public class CompensationBenefitsHRWorkerPanel extends javax.swing.JPanel {
      */
     private EmployeeManagement system;
     private OrganizationDirectory directory;
-    private Organization organization;
+    private Organization organization,org;
     private JPanel container,logincontainerJPanel;
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
@@ -44,13 +48,11 @@ public class CompensationBenefitsHRWorkerPanel extends javax.swing.JPanel {
         this.container=container;
         this.logincontainerJPanel=logincontainerJPanel;
         this.directory=directory;
+        this.organization=(HROrganization)organization;
         this.user=user;
-        this.loggedmhwjLabel.setText("Hi, "+user.getEmployee());
-        
-        projectNamejTextField.setText("");
-        addTrainingjButton.setVisible(true);
-        
-        DisplayProjects();
+        this.loggedmhwjLabel.setText("Welcome, "+user.getEmployee());
+        budgetjTextField.setText("");
+        popBudgetBonusRequest();
     }
 
     /**
@@ -65,35 +67,15 @@ public class CompensationBenefitsHRWorkerPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         loggedmhwjLabel = new javax.swing.JLabel();
         networknamejLabel = new javax.swing.JLabel();
-        assignProjectManagerjButton3 = new javax.swing.JButton();
-        assignProjectManagerjButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        projectNamejTextField = new javax.swing.JTextField();
         budgetjTextField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        skillsjTextArea = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        descriptionjTextArea = new javax.swing.JTextArea();
-        startdatejTextField = new javax.swing.JTextField();
-        enddatejTextField = new javax.swing.JTextField();
-        manageTeamjButton = new javax.swing.JButton();
+        messagejTextArea = new javax.swing.JTextArea();
+        bonussendToFinancejButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        projectsjTable = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        trainingNamejTextField = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        trainingdescriptionjTextArea = new javax.swing.JTextArea();
-        addTrainingjButton = new javax.swing.JButton();
-        manageTraineesjButton = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        trainingsjTable = new javax.swing.JTable();
+        budgetbonusRequestsjTable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(204, 204, 255));
 
@@ -105,26 +87,8 @@ public class CompensationBenefitsHRWorkerPanel extends javax.swing.JPanel {
         loggedmhwjLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         networknamejLabel.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        networknamejLabel.setText("Project Manager Dashboard");
+        networknamejLabel.setText("Compensation And Benefits HR Dashboard");
         networknamejLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-
-        assignProjectManagerjButton3.setBackground(new java.awt.Color(175, 180, 209));
-        assignProjectManagerjButton3.setText("IT Support and Asset Request");
-        assignProjectManagerjButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        assignProjectManagerjButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignProjectManagerjButton3ActionPerformed(evt);
-            }
-        });
-
-        assignProjectManagerjButton4.setBackground(new java.awt.Color(175, 180, 209));
-        assignProjectManagerjButton4.setText("Budget for Bonus and Events");
-        assignProjectManagerjButton4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        assignProjectManagerjButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignProjectManagerjButton4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,60 +96,39 @@ public class CompensationBenefitsHRWorkerPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(networknamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(loggedmhwjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(assignProjectManagerjButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(networknamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(assignProjectManagerjButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addComponent(loggedmhwjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(loggedmhwjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(networknamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(assignProjectManagerjButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(assignProjectManagerjButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(loggedmhwjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(networknamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1))
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "View Projects Information", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Budget for Bonus and Events", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Project Name");
-
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel7.setText("Start Date");
-
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel8.setText("End Date");
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel5.setText("Skills");
-
-        skillsjTextArea.setColumns(20);
-        skillsjTextArea.setRows(5);
-        jScrollPane2.setViewportView(skillsjTextArea);
+        jLabel1.setText("Budget");
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel9.setText("Description");
+        jLabel9.setText("Message");
 
-        descriptionjTextArea.setColumns(20);
-        descriptionjTextArea.setRows(5);
-        jScrollPane3.setViewportView(descriptionjTextArea);
+        messagejTextArea.setColumns(20);
+        messagejTextArea.setRows(5);
+        jScrollPane3.setViewportView(messagejTextArea);
 
-        manageTeamjButton.setBackground(new java.awt.Color(175, 180, 209));
-        manageTeamjButton.setText("View Project Team");
-        manageTeamjButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        manageTeamjButton.addActionListener(new java.awt.event.ActionListener() {
+        bonussendToFinancejButton.setBackground(new java.awt.Color(175, 180, 209));
+        bonussendToFinancejButton.setText("Receive and Send to Finance");
+        bonussendToFinancejButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        bonussendToFinancejButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageTeamjButtonActionPerformed(evt);
+                bonussendToFinancejButtonActionPerformed(evt);
             }
         });
 
@@ -198,29 +141,14 @@ public class CompensationBenefitsHRWorkerPanel extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(startdatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel8)
-                                .addGap(16, 16, 16)
-                                .addComponent(enddatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(projectNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(budgetjTextField))))
+                        .addComponent(budgetjTextField))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(manageTeamjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bonussendToFinancejButton, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -229,146 +157,40 @@ public class CompensationBenefitsHRWorkerPanel extends javax.swing.JPanel {
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(projectNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(budgetjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(budgetjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(startdatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enddatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addComponent(manageTeamjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bonussendToFinancejButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jScrollPane1.setBackground(new java.awt.Color(237, 226, 242));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Projects", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Budget for Bonus and Events", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP));
 
-        projectsjTable.setModel(new javax.swing.table.DefaultTableModel(
+        budgetbonusRequestsjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Project", "Manager", "Budget", "Start", "End", "Status"
+                "Request", "Sender", "Receiver", "Budget", "Message", "Result", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        projectsjTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        budgetbonusRequestsjTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                projectsjTableMouseClicked(evt);
+                budgetbonusRequestsjTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(projectsjTable);
-
-        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Trainings", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP));
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("Project Name");
-
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel10.setText("Description");
-
-        trainingdescriptionjTextArea.setColumns(20);
-        trainingdescriptionjTextArea.setRows(5);
-        jScrollPane4.setViewportView(trainingdescriptionjTextArea);
-
-        addTrainingjButton.setBackground(new java.awt.Color(175, 180, 209));
-        addTrainingjButton.setText("Add Training");
-        addTrainingjButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        addTrainingjButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addTrainingjButtonActionPerformed(evt);
-            }
-        });
-
-        manageTraineesjButton.setBackground(new java.awt.Color(175, 180, 209));
-        manageTraineesjButton.setText("View Trainees");
-        manageTraineesjButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        manageTraineesjButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageTraineesjButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(trainingNamejTextField)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 210, Short.MAX_VALUE)
-                        .addComponent(manageTraineesjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(addTrainingjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(trainingNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(manageTraineesjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addTrainingjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 11, Short.MAX_VALUE))
-        );
-
-        jScrollPane5.setBackground(new java.awt.Color(237, 226, 242));
-        jScrollPane5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Trainings", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP));
-
-        trainingsjTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Project", "Manager", "Project", "Description", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        trainingsjTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                trainingsjTableMouseClicked(evt);
-            }
-        });
-        jScrollPane5.setViewportView(trainingsjTable);
+        jScrollPane1.setViewportView(budgetbonusRequestsjTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -377,13 +199,9 @@ public class CompensationBenefitsHRWorkerPanel extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane5))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -394,204 +212,113 @@ public class CompensationBenefitsHRWorkerPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(130, 130, 130))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 300, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addTrainingjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTrainingjButtonActionPerformed
-        int selectedRow = projectsjTable.getSelectedRow();
-
+    private void budgetbonusRequestsjTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetbonusRequestsjTableMouseClicked
+        int selectedRow = budgetbonusRequestsjTable.getSelectedRow();
         if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Select Project to Request Training.");
-            trainingNamejTextField.setText("");
+            JOptionPane.showMessageDialog(null, "Please select Budget Request");
+            budgetjTextField.setText("");
+            messagejTextArea.setText("");
             return;
         }
         
-        Projects project = (Projects)projectsjTable.getValueAt(selectedRow, 0);
-        UserAccount projectmanager = project.getProjectManager();
-        String trainingname = trainingNamejTextField.getText();
-        String trainingdescription = trainingdescriptionjTextArea.getText();
-        if(trainingname.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Training Name is Required", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+        BudgetWorkRequest request = (BudgetWorkRequest)budgetbonusRequestsjTable.getValueAt(selectedRow, 0);
         
-        if(trainingdescription==null) {
-            JOptionPane.showMessageDialog(this, "Enter Training Description", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        boolean unique=system.getTrainingsDirectory().checkIfTrainingIsUnique(trainingname);
-        
-        if(!unique){
-            JOptionPane.showMessageDialog(this, "This Training Name is Already Taken", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        system.getTrainingsDirectory().createTraining(trainingname, trainingdescription, projectmanager, project, "Requested");
-        JOptionPane.showMessageDialog(null, "New Project Training Requested");
-        
-        dB4OUtil.storeSystem(system);
-        DisplayTrainings();
-    }//GEN-LAST:event_addTrainingjButtonActionPerformed
+        budgetjTextField.setText(String.valueOf(request.getBudget()));
+        messagejTextArea.setText(request.getMessage());
+    }//GEN-LAST:event_budgetbonusRequestsjTableMouseClicked
 
-    private void projectsjTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_projectsjTableMouseClicked
-        int selectedRow = projectsjTable.getSelectedRow();
+    private void bonussendToFinancejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bonussendToFinancejButtonActionPerformed
+        int selectedRow = budgetbonusRequestsjTable.getSelectedRow();
         if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select Project");
-            projectNamejTextField.setText("");
+            JOptionPane.showMessageDialog(null, "Please select Budget Request");
             return;
         }
         
-        Projects project = (Projects)projectsjTable.getValueAt(selectedRow, 0);
-        projectNamejTextField.setText(project.getName());
-        startdatejTextField.setText(project.getStartDate());
-        enddatejTextField.setText(project.getEndDate());
-        budgetjTextField.setText(String.valueOf(project.getBudget()));
-        skillsjTextArea.setText(project.getSkills());
-        descriptionjTextArea.setText(project.getDescription());
-        DisplayTrainings();
-    }//GEN-LAST:event_projectsjTableMouseClicked
-
-    private void manageTeamjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageTeamjButtonActionPerformed
-        int selectedRow = projectsjTable.getSelectedRow();
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select Project");
-            return;
+        BudgetWorkRequest request = (BudgetWorkRequest)budgetbonusRequestsjTable.getValueAt(selectedRow, 0);
+        Organization finOrg=null;
+        for(Organization orgs : system.getOrganizationDirectory().getOrganizationList()){
+            if (orgs instanceof FinanceOrganization){
+                finOrg = orgs;
+                break;
+            }
         }
-        
-        Projects project = (Projects)projectsjTable.getValueAt(selectedRow, 0);
-        
-        ProjectManagerWorkerTeamsPanel projectManagerWorkerTeamsPanel=new ProjectManagerWorkerTeamsPanel(logincontainerJPanel,container,system.getOrganizationDirectory(), user ,system,project);
-        CardLayout layout=(CardLayout)container.getLayout();
-        container.add("projectManagerWorkerTeamsPanel",projectManagerWorkerTeamsPanel);
-        layout.next(container);
-        
-    }//GEN-LAST:event_manageTeamjButtonActionPerformed
 
-    private void manageTraineesjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageTraineesjButtonActionPerformed
-        int selectedRow = trainingsjTable.getSelectedRow();
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select Traininng");
-            return;
+            
+        if (finOrg!=null){
+            request.setReceiver(user);
+            request.setStatus("Sent to Finance Approval");
+            finOrg.getWorkQueue().getWorkRequestList().add(request);
+            messagejTextArea.setText("");
+            budgetjTextField.setText("");
+            JOptionPane.showMessageDialog(null, "Bonus and Events Budget Request Sent to Finance");
+            dB4OUtil.storeSystem(system);
         }
+        popBudgetBonusRequest();
         
-        Trainings training = (Trainings)trainingsjTable.getValueAt(selectedRow, 0);
-        
-        ProjectManagerWorkerTraineesPanel projectManagerWorkerTraineesPanel=new ProjectManagerWorkerTraineesPanel(logincontainerJPanel,container,system.getOrganizationDirectory(), user ,system,training.getProject(),training);
-        CardLayout layout=(CardLayout)container.getLayout();
-        container.add("projectManagerWorkerTraineesPanel",projectManagerWorkerTraineesPanel);
-        layout.next(container);
-        
-        
-    }//GEN-LAST:event_manageTraineesjButtonActionPerformed
+    }//GEN-LAST:event_bonussendToFinancejButtonActionPerformed
 
-    private void assignProjectManagerjButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignProjectManagerjButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_assignProjectManagerjButton3ActionPerformed
-
-    private void assignProjectManagerjButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignProjectManagerjButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_assignProjectManagerjButton4ActionPerformed
-
-    private void trainingsjTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trainingsjTableMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_trainingsjTableMouseClicked
-
-    private void DisplayProjects() {
-        DefaultTableModel model = (DefaultTableModel) projectsjTable.getModel();
+    
+    public void popBudgetBonusRequest(){
+        DefaultTableModel model = (DefaultTableModel) budgetbonusRequestsjTable.getModel();
         
         model.setRowCount(0);
-        for (Projects project : system.getProjectsDirectory().getProjectsList()) {
-            if(project.getProjectManager().equals(user)){
-                Object[] row = new Object[6];
-                row[0] = project;
-                row[1] = project.getProjectManager();
-                row[2] = String.valueOf(project.getBudget());
-                row[3] = project.getStartDate();
-                row[4] = project.getEndDate();
-                row[5] = project.getStatus();
+        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
+            String budgetfor = ((BudgetWorkRequest) request).getBudgetfor();
+            if(budgetfor.equalsIgnoreCase("Bonus and Events")){
+                Object[] row = new Object[7];
+                row[0] = request;
+                row[1] = (request.getSender()!=null)?request.getSender():"";
+                row[2] = (request.getReceiver()!=null)?request.getReceiver():"";
+                row[3] =String.valueOf(((BudgetWorkRequest) request).getBudget());
+                row[4] = request.getMessage();
+                String result = ((BudgetWorkRequest) request).getRequesteResult();
+                row[5] = result == null ? "Waiting" : result;
+                row[6] = request.getStatus();
                 model.addRow(row);
             }
         }
     }
     
-    private void DisplayTrainings(){
-        int selectedRow = projectsjTable.getSelectedRow();
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select Project");
-            projectNamejTextField.setText("");
-            return;
-        }
-        
-        Projects project = (Projects)projectsjTable.getValueAt(selectedRow, 0);
-        
-        DefaultTableModel model = (DefaultTableModel) trainingsjTable.getModel();
-        
-        model.setRowCount(0);
-        for (Trainings training : system.getTrainingsDirectory().getTrainingsList()) {
-            if(training.getProjectManager().equals(user) && training.getProject().equals(project)){
-                Object[] row = new Object[5];
-                row[0] = training;
-                row[1] = training.getProjectManager();
-                row[2] = training.getProject();
-                row[3] = training.getDescription();
-                row[4] = training.getStatus();
-                model.addRow(row);
-            }
-        }
-    }
-    
-//    public void popProjectManagerComboBox(){
-//        projectmanagerjComboBox.removeAllItems();
-//        for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()){
-//            if(user.getRole() instanceof ProjectManagerLogin){
-//                projectmanagerjComboBox.addItem(user);
+//    public void popBudgetAssetRequest(){
+//        DefaultTableModel model = (DefaultTableModel) asstesbudgetTable.getModel();
+//        
+//        model.setRowCount(0);
+//        for (WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
+//            String budgetfor = ((BudgetWorkRequest) request).getBudgetfor();
+//            if(budgetfor.equalsIgnoreCase("Assets")){
+//                Object[] row = new Object[7];
+//                row[0] = request;
+//                row[1] = (request.getSender()!=null)?request.getSender():"";
+//                row[2] = (request.getReceiver()!=null)?request.getReceiver():"";
+//                row[3] =String.valueOf(((BudgetWorkRequest) request).getBudget());
+//                row[4] = request.getMessage();
+//                String result = ((BudgetWorkRequest) request).getRequesteResult();
+//                row[5] = result == null ? "Waiting" : result;
+//                row[6] = request.getStatus();
+//                model.addRow(row);
 //            }
 //        }
 //    }
     
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addTrainingjButton;
-    private javax.swing.JButton assignProjectManagerjButton3;
-    private javax.swing.JButton assignProjectManagerjButton4;
+    private javax.swing.JButton bonussendToFinancejButton;
+    private javax.swing.JTable budgetbonusRequestsjTable;
     private javax.swing.JTextField budgetjTextField;
-    private javax.swing.JTextArea descriptionjTextArea;
-    private javax.swing.JTextField enddatejTextField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel loggedmhwjLabel;
-    private javax.swing.JButton manageTeamjButton;
-    private javax.swing.JButton manageTraineesjButton;
+    private javax.swing.JTextArea messagejTextArea;
     private javax.swing.JLabel networknamejLabel;
-    private javax.swing.JTextField projectNamejTextField;
-    private javax.swing.JTable projectsjTable;
-    private javax.swing.JTextArea skillsjTextArea;
-    private javax.swing.JTextField startdatejTextField;
-    private javax.swing.JTextField trainingNamejTextField;
-    private javax.swing.JTextArea trainingdescriptionjTextArea;
-    private javax.swing.JTable trainingsjTable;
     // End of variables declaration//GEN-END:variables
 }

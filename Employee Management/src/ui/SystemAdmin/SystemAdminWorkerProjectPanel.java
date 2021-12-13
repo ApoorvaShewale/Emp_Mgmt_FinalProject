@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ApoorvaShewale
+ * @author priyankashinde
  */
 @SuppressWarnings("unchecked")
 public class SystemAdminWorkerProjectPanel extends javax.swing.JPanel {
@@ -359,7 +359,6 @@ public class SystemAdminWorkerProjectPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        projectsjTable.setGridColor(java.awt.SystemColor.window);
         projectsjTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 projectsjTableMouseClicked(evt);
@@ -421,7 +420,7 @@ public class SystemAdminWorkerProjectPanel extends javax.swing.JPanel {
             budgetCost=Double.parseDouble(budget);
         }
         catch(Exception ex){
-            JOptionPane.showMessageDialog(this, "Invalid Budget.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please enter valid budget", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
@@ -503,6 +502,7 @@ public class SystemAdminWorkerProjectPanel extends javax.swing.JPanel {
         }
         Projects project = (Projects)projectsjTable.getValueAt(selectedRow, 0);
         system.getProjectsDirectory().getProjectsList().remove(project);
+        JOptionPane.showMessageDialog(null, "Project Deleted");
         dB4OUtil.storeSystem(system);
         DisplayProjects();
     }//GEN-LAST:event_deleteProjectjButtonActionPerformed
@@ -545,7 +545,7 @@ public class SystemAdminWorkerProjectPanel extends javax.swing.JPanel {
             budgetCost=Double.parseDouble(budget);
         }
         catch(Exception ex){
-            JOptionPane.showMessageDialog(this, "Invalid Date.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Invalid budget", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         

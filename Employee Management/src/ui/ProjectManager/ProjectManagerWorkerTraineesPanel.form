@@ -134,7 +134,7 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="2" position="3" title="Create / Update Projects"/>
+            <TitledBorder justification="2" position="3" title="Assign Team Member"/>
           </Border>
         </Property>
       </Properties>
@@ -256,6 +256,9 @@
                 <Column editable="false" title="Assigned On" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
               </Table>
+            </Property>
+            <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" id="Window" palette="2" red="ff" type="palette"/>
             </Property>
           </Properties>
           <Events>

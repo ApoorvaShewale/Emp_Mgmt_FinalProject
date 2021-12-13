@@ -9,6 +9,7 @@ package business.WorkQueue;
  *
  * @author ApoorvaShewale
  */
+@SuppressWarnings("unchecked")
 public class ITHelpDeskWorkRequest extends WorkRequest {
     private String requesteResult;
 

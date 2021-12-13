@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Saamu
+ * @author priyankashinde
  */
 @SuppressWarnings("unchecked")
 public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
@@ -185,7 +185,7 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
         jLabel41.setText("First Name");
 
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel43.setText("Date of Birth");
+        jLabel43.setText("Birth Year");
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel44.setText("Sex");
@@ -213,7 +213,7 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel51.setText("SSN No");
 
-        sexjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Both", "Other" }));
+        sexjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Preferred not to say", "Other" }));
 
         yearjComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -815,13 +815,45 @@ public class TalentAcquistionWorkerEmployeePanel extends javax.swing.JPanel {
                 }
             }
         }
-
-        if(!unique){
-            JOptionPane.showMessageDialog(this, "Username Already Taken", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        
+//
+//        if(!unique){
+//            JOptionPane.showMessageDialog(this, "Username Already Taken", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
+//        
+//        boolean uniquephone=system.checkIfPhoneIsUnique(phoneno);
+//        if(uniquephone){
+//            //Step 1: Go inside each organization
+//            for(Organization organization1:system.getOrganizationDirectory().getOrganizationList()){
+//                uniquephone=organization1.getUserAccountDirectory().checkIfPhonenoIsUnique(phoneno);
+//                if(!uniquephone){
+//                    inOrganization=organization1;
+//                    break;
+//                }
+//            }
+//        }
+//
+//        if(!uniquephone){
+//            JOptionPane.showMessageDialog(this, "Phone Number Should be Unique", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
+//        
+//        boolean uniqueSSn=system.checkIfSSnIsUnique(ssno);
+//        if(uniqueSSn){
+//            //Step 1: Go inside each organization
+//            for(Organization organization1:system.getOrganizationDirectory().getOrganizationList()){
+//                uniqueSSn=organization1.getUserAccountDirectory().checkIfSSnoIsUnique(ssno);
+//                if(!uniqueSSn){
+//                    inOrganization=organization1;
+//                    break;
+//                }
+//            }
+//        }
+//
+//        if(!uniqueSSn){
+//            JOptionPane.showMessageDialog(this, "SSN Should be Unique", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
         
 //        boolean uniqueEmail=system.checkIfEmailIsUnique(mailid);
 //        if(uniqueEmail){

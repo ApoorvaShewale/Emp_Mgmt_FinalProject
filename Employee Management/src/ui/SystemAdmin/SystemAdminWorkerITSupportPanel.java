@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ApoorvaShewale
+ * @author priyankashinde
  */
 @SuppressWarnings("unchecked")
 public class SystemAdminWorkerITSupportPanel extends javax.swing.JPanel {
@@ -306,7 +306,6 @@ public class SystemAdminWorkerITSupportPanel extends javax.swing.JPanel {
         Organization dept = (Organization)organizationjComboBox.getSelectedItem();
         if (dept != null){
             fillRolesComboBox(dept);
-            displayEmployees(dept);
         }
     }//GEN-LAST:event_organizationjComboBoxActionPerformed
 
@@ -373,13 +372,13 @@ public class SystemAdminWorkerITSupportPanel extends javax.swing.JPanel {
         }
 
         if(!unique){
-            JOptionPane.showMessageDialog(this, "Manage Admin Username Already Used", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Username Already Used", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         Organization organization = (Organization) organizationjComboBox.getSelectedItem();
         UserAccount entadminuser = organization.getUserAccountDirectory().createUser(username, password, employee, role);
-        JOptionPane.showMessageDialog(null, "Enterprise Admin Added");
+        JOptionPane.showMessageDialog(null, "Organization User Added");
         dB4OUtil.storeSystem(system);
         DisplayEnterpisesAdmins();
     }//GEN-LAST:event_saveEnterprisejButtonActionPerformed
@@ -411,6 +410,7 @@ public class SystemAdminWorkerITSupportPanel extends javax.swing.JPanel {
         Employee employee =adminuser.getEmployee();
         system.getEmployeeDirectory().getEmployeeList().remove(employee);
         organization.getUserAccountDirectory().getUserAccountList().remove(adminuser);
+        JOptionPane.showMessageDialog(null, "User Deleted");
         dB4OUtil.storeSystem(system);
         DisplayEnterpisesAdmins();
     }//GEN-LAST:event_deleteEnterprisejButtonActionPerformed
@@ -525,7 +525,7 @@ public class SystemAdminWorkerITSupportPanel extends javax.swing.JPanel {
         this.adminpasswordjPasswordField.setText(selUser.getPassword());
 
         this.employeeNamejTextField.setText(selUser.getEmployee().getName());
-        this.rolejComboBox.setSelectedItem((Role)selUser.getRole());
+        this.rolejComboBox.setSelectedItem(selUser.getRole());
         organizationjComboBox.setSelectedIndex(0);
         newEnterprisejButton.setVisible(true);
         updateEnterprisejButton.setVisible(true);
@@ -549,18 +549,6 @@ public class SystemAdminWorkerITSupportPanel extends javax.swing.JPanel {
             rolejComboBox.addItem(role);
         }
     }
-
-    private void displayEmployees(Organization dept){
-//        DefaultTableModel model = (DefaultTableModel) organizationUsersjTable.getModel();
-//        
-//        model.setRowCount(0);
-//        
-//        for (Employee employee : dept.getEmployeeDirectory().getEmployeeList()){
-//            Object[] row = new Object[1];
-//            row[0] = employee;
-//            model.addRow(row);
-//        }
-    }
     
     private void DisplayEnterpisesAdmins() {
         DefaultTableModel model = (DefaultTableModel) enterprisessjTable.getModel();
@@ -569,7 +557,6 @@ public class SystemAdminWorkerITSupportPanel extends javax.swing.JPanel {
         Organization organization = (Organization)organizationjComboBox.getSelectedItem();
         if (organization != null){
             for (UserAccount users : organization.getUserAccountDirectory().getUserAccountList()) {
-                System.out.println(users);
                 Object[] row = new Object[4];
                 row[0] = users;
                 row[1] = users.getRole();

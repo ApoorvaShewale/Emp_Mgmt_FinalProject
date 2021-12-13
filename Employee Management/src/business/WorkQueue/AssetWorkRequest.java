@@ -7,8 +7,9 @@ package business.WorkQueue;
 
 /**
  *
- * @author Apoorva Shewale
+ * @author ApoorvaShewale
  */
+@SuppressWarnings("unchecked")
 public class AssetWorkRequest extends WorkRequest{
         private String requesteResult;
 

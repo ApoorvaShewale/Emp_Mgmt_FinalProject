@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Saamu
+ * @author ApoorvaShewale
  */
 @SuppressWarnings("unchecked")
 public class TechSupportWorkerPanel extends javax.swing.JPanel {
@@ -250,7 +250,7 @@ public class TechSupportWorkerPanel extends javax.swing.JPanel {
         request.setRequesteResult(message);
         statusjTextField.setText("");
         messagejTextArea.setText("");
-        JOptionPane.showMessageDialog(null, "IT Support Request Status Updated");
+        JOptionPane.showMessageDialog(null, "IT Support Request Resolved");
         dB4OUtil.storeSystem(system);
         popITHelpSupportRequest();
         

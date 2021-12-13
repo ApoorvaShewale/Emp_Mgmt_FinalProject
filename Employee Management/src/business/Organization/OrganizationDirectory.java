@@ -26,7 +26,7 @@ public class OrganizationDirectory {
         return organizationList;
     }
     
-    public Organization createOrganization(Organization.Type type){
+    public Organization createOrganization(Type type){
         Organization organization = null;
         if (type.getValue().equals(Type.HR.getValue())){
             organization = new HROrganization();
