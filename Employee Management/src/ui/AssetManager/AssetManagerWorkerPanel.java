@@ -8,6 +8,7 @@ package ui.AssetManager;
 import business.DB4OUtil.DB4OUtil;
 import business.Organization.OrganizationDirectory;
 import business.EmployeeManagement;
+import business.Organization.FinanceOrganization;
 import business.Organization.HROrganization;
 import business.Organization.Organization;
 import business.Organization.SupportOrganization;
@@ -409,16 +410,16 @@ public class AssetManagerWorkerPanel extends javax.swing.JPanel {
         budgetRequest.setBudget(budgetCost);
         budgetRequest.setBudgetfor("Assets");
 
-        Organization hrOrg=null;
+        Organization finOrg=null;
         for(Organization orgs : system.getOrganizationDirectory().getOrganizationList()){
-            if (orgs instanceof HROrganization){
-                hrOrg = orgs;
+            if (orgs instanceof FinanceOrganization){
+                finOrg = orgs;
                 break;
             }
         }
 
-        if (hrOrg!=null){
-            hrOrg.getWorkQueue().getWorkRequestList().add(budgetRequest);
+        if (finOrg!=null){
+            finOrg.getWorkQueue().getWorkRequestList().add(budgetRequest);
             user.getWorkQueue().getWorkRequestList().add(budgetRequest);
             messagejTextArea1.setText("");
             budgetjTextField.setText("");

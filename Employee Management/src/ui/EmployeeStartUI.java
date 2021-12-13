@@ -289,7 +289,7 @@ public class EmployeeStartUI extends javax.swing.JFrame {
         jLabel1.setText("You have been Signed Out.");
 
         jLabel3.setBackground(new java.awt.Color(0, 153, 153));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/employee1.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/img2.jpeg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
